@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>参赛规则｜大模型形式数学竞赛</title>
+    <meta name="description" content="参赛资格、Lean/Litex-only 规范、提交节奏、违规处理等规则。">
+    <meta name="keywords" content="规则, 参赛资格, 合规, 队伍要求">
+    <!-- canonical will be set dynamically in main.js -->
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="参赛规则｜形式化科学竞赛 2025">
+    <meta property="og:description" content="参赛资格、队伍要求与合规规则。">
+    <meta property="og:image" content="assets/img/og-cover.svg">
+    <meta property="og:locale" content="zh_CN">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a href="index.html" class="brand" aria-label="返回首页">
+          <span class="logo">
+            <img src="assets/img/favicon.svg" alt="FormSci 标志" width="24" height="24">
+          </span>
+          <span class="brand-text">FormSci Challenge 2025</span>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="展开导航">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+          </button>
+          <ul id="nav-menu" class="nav-menu">
+            <li><a href="about.html">关于</a></li>
+            <li><a href="tracks.html">赛道</a></li>
+            <li><a href="dates.html">重要日期</a></li>
+            <li><a href="downloads.html">赛题下载</a></li>
+            <li><a href="awards.html">奖项</a></li>
+            <li><a href="rules.html" aria-current="page">规则</a></li>
+            <li><a href="organizers.html">组织者</a></li>
+          </ul>
+        </nav>
+        <a class="btn primary small" href="https://www.xir.cn/competitions/1143" target="_blank" rel="noreferrer noopener">立即参与</a>
+        <a class="btn ghost small" href="en/rules.html" hreflang="en" lang="en" rel="alternate">EN</a>
+        <button id="themeToggle" class="btn ghost small" aria-label="切换主题">切换主题</button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="rules" class="section">
+        <div class="container">
+          <!-- 面包屑导航 -->
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="index.html">首页</a>
+            <span class="separator">/</span>
+            <span>参赛规则</span>
+          </nav>
+
+          <h1 class="section-title">参赛规则</h1>
+          <p class="lead">所有解答必须以 Lean/Litex 语言提交，严格按照提交节奏与合规要求执行。</p>
+
+          <nav class="subnav" aria-label="本页导航">
+            <a href="#rules-eligibility">报名与组队</a>
+            <a href="#rules-compliance">作品要求</a>
+            <a href="#rules-submit-review">评审规则</a>
+            <a href="#rules-cadence">通知与获奖</a>
+            <a href="#rules-violation">组织方权利</a>
+          </nav>
+        </div>
+      </section>
+
+      <!-- 参赛资格 -->
+      <section id="rules-eligibility" class="section alt reveal">
+        <div class="container">
+          <h2 class="section-title">报名与组队</h2>
+          <div class="grid two">
+            <div class="card">
+              <h3>适用对象</h3>
+              <ul class="check">
+                <li>全球高校在校学生（本科/硕士/博士）</li>
+                <li>科研机构研究人员</li>
+                <li>企业技术人员与独立开发者</li>
+                <li>形式化方法、AI、计算机科学相关领域从业者</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>组队要求</h3>
+              <ul class="disc">
+                <li><strong>队伍规模</strong>：每队 1–5 人</li>
+                <li><strong>跨单位组队</strong>：允许，但需在报名时说明</li>
+                <li><strong>队长职责</strong>：负责队伍协调与主办方沟通</li>
+                <li><strong>联络方式</strong>：每队提供唯一官方邮箱</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 合规要求 -->
+      <section id="rules-compliance" class="section reveal">
+        <div class="container">
+          <h2 class="section-title">作品要求</h2>
+          <div class="grid cards three">
+            <article class="card">
+              <h3>⚠️ 禁止行为</h3>
+              <ul class="disc">
+                <li>数据集泄露或传播</li>
+                <li>抄袭他人代码或成果</li>
+                <li>伪造实验结果</li>
+                <li>违规协作（队伍间交换答案）</li>
+                <li>使用未披露的外部数据</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>✅ 允许行为</h3>
+              <ul class="check">
+                <li>使用公开数据集与预训练模型</li>
+                <li>引用开源工具与库</li>
+                <li>参考公开发表的论文方法</li>
+                <li>与队内成员充分协作</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>📋 披露义务</h3>
+              <ul class="disc">
+                <li>所有外部数据来源需在报告中注明</li>
+                <li>使用的开源工具需列出许可证</li>
+                <li>参考的论文需完整引用</li>
+                <li>预训练模型需说明版本和来源</li>
+              </ul>
+            </article>
+          </div>
+          <div class="card mt-16">
+            <h3>Lean/Litex-only 要求</h3>
+            <ul class="disc">
+              <li>所有解答必须以 <strong>Lean/Litex</strong> 语言提交，禁止自然语言解释或辅助说明。</li>
+              <li>提交文件需在标准 <strong>Lean/Litex</strong> 环境中一次性通过编译检查。</li>
+              <li>命题语义需与自然语言题意一致，否则判为错误。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 提交与评审 -->
+      <section id="rules-submit-review" class="section alt reveal">
+        <div class="container">
+          <h2 class="section-title">评审规则</h2>
+          <div class="grid two">
+            <div class="card">
+              <h3>提交规范</h3>
+              <ol class="steps">
+                <li><strong>证明脚本</strong>：Lean/Litex 代码，能在标准环境中 <strong>一次性通过编译</strong></li>
+                <li><strong>命题一致性</strong>：形式化命题与原题语义一致</li>
+                <li><strong>README</strong>：包含环境配置与编译说明</li>
+                <li><strong>许可证声明</strong>：明确代码与数据的使用许可</li>
+              </ol>
+            </div>
+            <div class="card">
+              <h3>答辩要求</h3>
+              <p>决赛入围队伍需参加答辩（线上或线下）：</p>
+              <ul class="disc">
+                <li><strong>展示时长</strong>：15 分钟技术讲解</li>
+                <li><strong>提问环节</strong>：10 分钟专家提问</li>
+                <li><strong>演示要求</strong>：建议准备实时系统演示</li>
+                <li><strong>材料准备</strong>：PPT、Demo、补充材料</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card mt-16">
+            <h3>评测流程（编译优先）</h3>
+            <ol class="steps">
+              <li><strong>编译检查</strong>：Lean/Litex 代码能否无误编译通过</li>
+              <li><strong>语义一致性</strong>：形式化命题是否与自然语言题意一致</li>
+              <li>两项均通过判为正确；任一不通过则判为错误</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- 提交节奏与限额 -->
+      <section id="rules-cadence" class="section reveal">
+        <div class="container">
+          <h2 class="section-title">通知与获奖</h2>
+          <div class="grid two">
+            <div class="card">
+              <h3>练习赛（10/20–10/30）</h3>
+              <ul class="disc">
+                <li>每日每队最多提交 <strong>1 次</strong></li>
+                <li>提交窗口：10:00–20:00</li>
+                <li>T+1 天 10:00 公布评测结果</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>初赛（11/03–11/28）</h3>
+              <ul class="disc">
+                <li>每日 10:00 发布新赛题；20:00 截止提交</li>
+                <li>T+1 天 10:00 公布评测结果与排名</li>
+                <li>采用“平均标准化每日得分”机制</li>
+              </ul>
+            </div>
+          </div>
+          <p class="text-muted mt-12">以上时间均为北京时间（UTC+8）。</p>
+        </div>
+      </section>
+
+      <!-- 违规处理 -->
+      <section id="rules-violation" class="section reveal">
+        <div class="container">
+          <h2 class="section-title">组织方权利</h2>
+          <div class="card">
+            <p>主办方将严格审查所有提交，一经发现以下行为将视情节轻重给予处罚：</p>
+            <ul class="disc">
+              <li><strong>警告</strong>：轻微违规（如格式不规范、文档不完整）需在规定时间内补正</li>
+              <li><strong>扣分</strong>：未充分披露数据来源，酌情扣除 5-15 分</li>
+              <li><strong>取消资格</strong>：抄袭、造假、泄露数据等严重违规行为，立即取消资格并通报</li>
+              <li><strong>禁赛</strong>：情节严重者禁止参加未来赛事</li>
+            </ul>
+            <p class="mt-16">所有违规判定由组委会最终裁决，参赛即视为同意接受本规则约束。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 知识产权与权益 -->
+      <section id="rules-rights" class="section reveal">
+        <div class="container">
+          <h2 class="section-title">知识产权与权益</h2>
+          <div class="grid two">
+            <div class="card">
+              <h3>作品与版权</h3>
+              <ul class="disc">
+                <li>参赛队伍保留对其作品的著作权。</li>
+                <li>参赛即授予主办方非独占、全球范围、无版税的使用许可，用于评测、展示与学术交流。</li>
+                <li>如包含第三方内容，参赛队伍需确保具备合法授权并承担相应责任。</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>开源与复现</h3>
+              <ul class="disc">
+                <li>鼓励开源，推荐采用 OSI 认可的许可证（如 MIT/Apache-2.0）。</li>
+                <li>决赛入围队伍需提交可复现的源代码与文档，仅用于比赛评测与复核。</li>
+                <li>涉及个人信息与敏感数据必须脱敏处理。</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card mt-16">
+            <h3>法律与合规</h3>
+            <ul class="disc">
+              <li>参赛即表示同意遵守本规则与平台条款。</li>
+              <li>如与平台公告不一致，以平台公告为准。</li>
+              <li>组委会保留对规则的最终解释权。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section alt reveal">
+        <div class="container">
+          <div class="grid two">
+            <div>
+              <h2 class="section-title">准备好了吗？</h2>
+              <p class="lead">认真阅读规则，诚信参赛，与全球选手公平竞技！</p>
+            </div>
+            <div class="flex items-center gap-12">
+              
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button id="backToTop" class="back-to-top" aria-label="返回顶部">↑</button>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2025 大模型形式数学竞赛 · 中国计算机学会（CCF）</p>
+        <nav aria-label="页脚导航">
+          <a href="rules.html" aria-current="page">规则</a>
+          <a href="organizers.html">组织者</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

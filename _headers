@@ -1,0 +1,30 @@
+# Netlify 安全头配置
+/*
+  # XSS 防护
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  
+  # 内容安全策略
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  
+  # 强制 HTTPS
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  
+  # 推荐人策略
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # 权限策略
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+  
+  # 缓存控制
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML 页面独立缓存策略
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# 静态资源长期缓存
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
