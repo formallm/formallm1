@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Downloads | Formal Mathematics Challenge</title>
+    <meta name="description" content="Datasets, baselines, environment and evaluation scripts.">
+    <meta name="keywords" content="downloads, data, baseline, scripts, docs">
+    <link rel="alternate" hreflang="en" href="downloads.html">
+    <link rel="alternate" hreflang="zh-CN" href="../downloads.html">
+    <meta name="theme-color" content="#0b1221" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Downloads | Formal Science Challenge 2025">
+    <meta property="og:description" content="Datasets, baselines, environment and evaluation scripts.">
+    <meta property="og:image" content="../assets/img/og-cover.svg">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a href="index.html" class="brand" aria-label="Go to home">
+          <span class="logo">
+            <img src="../assets/img/favicon.svg" alt="FormSci logo" width="24" height="24">
+          </span>
+          <span class="brand-text">FormSci Challenge 2025</span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+          </button>
+          <ul id="nav-menu" class="nav-menu">
+            <li><a href="about.html">About</a></li>
+            <li><a href="tracks.html">Tracks</a></li>
+            <li><a href="dates.html">Important Dates</a></li>
+            <li><a href="downloads.html" aria-current="page">Downloads</a></li>
+            <li><a href="awards.html">Awards</a></li>
+            <li><a href="rules.html">Rules</a></li>
+            <li><a href="organizers.html">Organizers</a></li>
+          </ul>
+        </nav>
+        <a class="btn primary small" href="https://www.xir.cn/competitions/1143" target="_blank" rel="noreferrer noopener">Register</a>
+        <a class="btn ghost small" href="../downloads.html" hreflang="zh-CN" lang="zh-CN" rel="alternate">中文</a>
+        <button id="themeToggle" class="btn ghost small" aria-label="Toggle theme">Theme</button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="downloads" class="section">
+        <div class="container">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <span>Downloads</span>
+          </nav>
+          <h1 class="section-title">Downloads</h1>
+          <div class="card highlight">
+            <h3>Today's Problems <small class="text-muted" id="today-date-en"></small></h3>
+            <p class="text-muted mt-8">Today's set is available below.</p>
+          </div>
+          <div id="downloads-dynamic"></div>
+          <script id="downloads-data" type="application/json">
+{
+  "lastUpdated": "2025-10-20T09:39:52+08:00",
+  "datasets": [
+    {
+      "timestamp": "2025-10-20 09:39:52",
+      "title": "Datasets",
+      "note": "Available after registration",
+      "items": [
+        {"name": "Practice dataset", "md5": "58e65f70ba0b9f881897244ba450457c", "url": "https://www.xir.cn/competitions/1143", "local": "../assets/files/practice-dataset.jsonl", "available": true}
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "timestamp": "2025-10-17 17:53:38",
+      "title": "Examples",
+      "note": "Available after registration",
+      "items": [
+        {"name": "Lean example", "md5": "5c5ca8e17fc08f490093d7e493e97f6c", "url": "https://www.xir.cn/competitions/1143", "local": "../assets/files/lean-example.py", "available": true},
+        {"name": "Litex example", "md5": "6fda4082dceeab1ec65073f3a072ed01", "url": "https://www.xir.cn/competitions/1143", "local": "../assets/files/litex-example.py", "available": true}
+      ]
+    }
+  ],
+  "events": [
+    {"title": "Problem Sharing Session", "desc": "The Q&A sharing session for the track will start at 19:00 on Oct 23 (Thu).", "time": "Oct 23 (Thu) 19:00", "link": "https://meeting.tencent.com/dw/pzNKeE2K0yaP", "limit": 100}
+  ],
+  "docs": [
+    {"name": "Litex official", "url": "https://litexlang.com/"},
+    {"name": "Lean official", "url": "https://lean-lang.org/"}
+  ],
+  "notices": [
+    {"title": "Problem files", "content": "Practice set released. Preliminary set not yet released. Please follow updates in the group."},
+    {"title": "File format", "content": "Files are in JSONL. Each entry contains id and nl_problem."}
+  ],
+  "sample": {"id": "100439", "nl_problem": "21) For how many natural numbers $n$, both $n$ and $(n-6)^{2}+1$ are prime?\n(A) 1, (B) 3\n(D) 7 , (E) more than 8."},
+  "submission": {
+    "desc": "Teams may configure environment locally, debug algorithms, and submit results online. Results are formal solution code in Lean or Litex syntax.",
+    "rules": [
+      "Use publicly available base models; if private/fine-tuned models are used, open-source code & weights to organizers.",
+      "Lean version v4.21.0; other versions may fail auto-scoring and are not supported for score review.",
+      "Litex version v0.1.11-beta; other versions may fail auto-scoring and are not supported for score review.",
+      "Score appeals via email are allowed; after verification, scores will be corrected.",
+      "Submissions must include answers for all problems; missing ones are counted as wrong.",
+      "Results must be JSONL including id and nl_problem, etc."
+    ],
+    "fields": [
+      {"name": "id", "desc": "Given problem ID."},
+      {"name": "nl_problem", "desc": "Original natural-language problem."},
+      {"name": "formal_type", "desc": "Formal language type: Lean or Litex."},
+      {"name": "header", "desc": "Environment code/lemmas (Lean: import/open/lemma; Litex: import/know/prop/fn)."},
+      {"name": "formal_statement", "desc": "Formal statement (Lean: theorem to :=; Litex: claim to prove)."},
+      {"name": "formal_code", "desc": "Complete code: no escaping issues; core logic commented; no cheating."}
+    ]
+  },
+  "fairplay": "Teams must maintain fair play; cheating and exploiting loopholes is prohibited. Automatic anti-cheating + manual review in place."
+}
+          </script>
+        </div>
+      </section>
+    </main>
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2025 Formal Mathematics Challenge · CCF</p>
+        <nav aria-label="Footer navigation">
+          <a href="rules.html">Rules</a>
+          <a href="organizers.html">Organizers</a>
+        </nav>
+      </div>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/downloads.js"></script>
+    <script>
+      (function(){
+        var d=new Date();
+        var s=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,'0')+"-"+String(d.getDate()).padStart(2,'0');
+        var el=document.getElementById('today-date-en');
+        if(el){ el.textContent=s; }
+      })();
+    </script>
+  </body>
+</html>
+

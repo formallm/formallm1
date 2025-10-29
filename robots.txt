@@ -1,0 +1,25 @@
+# 形式化科学竞赛 2025 - Robots.txt
+
+User-agent: *
+Allow: /
+
+# 禁止抓取的路径（如果有）
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap 位置
+Sitemap: /sitemap.xml
+
+# 爬虫速率限制
+Crawl-delay: 1
+
+# 常见搜索引擎特定规则
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
