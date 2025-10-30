@@ -14,39 +14,48 @@
     // 缓存数据
     cache: null,
 
+    // 生成候选数据地址，兼容根目录与子目录页面
+    getCandidateDataURLs() {
+      const candidates = [];
+      // 1) 原始相对路径（适用于根目录页面）
+      candidates.push('assets/data/leaderboard.json');
+      // 2) 上一级相对路径（适用于如 cn/ 或 en/ 等子目录页面）
+      candidates.push('../assets/data/leaderboard.json');
+      // 3) 推断 GitHub Pages 项目根（/repo-name/）
+      const parts = window.location.pathname.split('/').filter(Boolean);
+      if (parts.length > 0) {
+        candidates.push('/' + parts[0] + '/assets/data/leaderboard.json');
+      }
+      // 4) 站点根绝对路径（自定义域名场景）
+      candidates.push('/assets/data/leaderboard.json');
+      // 去重
+      return Array.from(new Set(candidates));
+    },
+
     /**
      * 获取排行榜数据
-     * 优先从云端获取，失败时回退到页面内嵌数据
+     * 仅从外部 JSON 加载，不再回退到页面内嵌数据
      */
     async fetch() {
       if (this.cache) {
         return this.cache;
       }
 
-      try {
-        // 尝试从云端获取
-        const response = await fetch(this.dataURL + '?_=' + Date.now());
-        if (response.ok) {
-          const data = await response.json();
-          this.cache = data;
-          return data;
-        }
-      } catch (err) {
-        console.warn('无法从云端获取排行榜数据，使用内嵌数据:', err);
-      }
-
-      // 回退到页面内嵌数据
-      const embeddedScript = document.getElementById('leaderboard-data');
-      if (embeddedScript) {
+      // 依次尝试多个候选地址
+      const urls = this.getCandidateDataURLs();
+      for (const url of urls) {
         try {
-          const data = JSON.parse(embeddedScript.textContent);
-          this.cache = data;
-          return data;
+          const response = await fetch(url + '?_=' + Date.now());
+          if (response.ok) {
+            const data = await response.json();
+            this.cache = data;
+            return data;
+          }
         } catch (err) {
-          console.error('解析内嵌排行榜数据失败:', err);
+          // 忽略，继续尝试下一个候选
         }
       }
-
+      console.error('无法加载排行榜数据。尝试过的地址：', urls);
       return null;
     },
 
@@ -96,13 +105,17 @@
      * 渲染单个赛道（包含切换功能）
      */
     renderTrack(container, trackId, trackData, isEn) {
-      // 创建切换按钮
+      // 选择初始类型：若今日榜为空，则默认显示总榜
+      const initialType = (Array.isArray(trackData.daily) && trackData.daily.length > 0) ? 'daily' : 'overall';
+      const dailyActive = initialType === 'daily';
+
+      // 创建切换按钮（根据初始类型设置 active）
       const switchHTML = `
         <div class="leaderboard-switch" style="text-align:center;margin-bottom:16px;">
-          <button class="btn-switch active" data-track="${trackId}" data-type="daily">
+          <button class="btn-switch ${dailyActive ? 'active' : ''}" data-track="${trackId}" data-type="daily">
             ${isEn ? 'Daily' : '今日榜'}
           </button>
-          <button class="btn-switch" data-track="${trackId}" data-type="overall">
+          <button class="btn-switch ${!dailyActive ? 'active' : ''}" data-track="${trackId}" data-type="overall">
             ${isEn ? 'Overall' : '总榜'}
           </button>
         </div>
@@ -112,8 +125,9 @@
 
       container.innerHTML = switchHTML;
 
-      // 初始显示今日榜
-      this.renderTable(`${trackId}-table-container`, trackData.daily, isEn, trackId, 1);
+      // 初始显示
+      const initialData = dailyActive ? trackData.daily : trackData.overall;
+      this.renderTable(`${trackId}-table-container`, initialData, isEn, trackId, 1);
 
       // 绑定切换事件
       const buttons = container.querySelectorAll('.btn-switch');
