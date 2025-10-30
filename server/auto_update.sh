@@ -80,10 +80,20 @@ fi
 
 # 6. 执行数据获取
 log "📡 获取排行榜数据..."
-if python3 "$FETCH_SCRIPT" "$API_KEY" "$STAGE" >> "$LOG_FILE" 2>&1; then
-    log "✅ 数据获取成功"
+# 可选：通过环境变量 DAILY_DATE 指定日榜日期（YYYY-MM-DD）
+if [ -n "$DAILY_DATE" ]; then
+    log "🗓️  指定每日榜日期: $DAILY_DATE"
+    if python3 "$FETCH_SCRIPT" "$API_KEY" "$STAGE" "$DAILY_DATE" >> "$LOG_FILE" 2>&1; then
+        log "✅ 数据获取成功"
+    else
+        error_exit "数据获取失败"
+    fi
 else
-    error_exit "数据获取失败"
+    if python3 "$FETCH_SCRIPT" "$API_KEY" "$STAGE" >> "$LOG_FILE" 2>&1; then
+        log "✅ 数据获取成功"
+    else
+        error_exit "数据获取失败"
+    fi
 fi
 
 # 7. 检查是否有变更

@@ -60,6 +60,53 @@ def fetch_daily_ranking(stage=STAGE, date=None):
         return None
 
 
+def _get_first_date_key(daily_payload: dict):
+    """返回每日数据中的第一个日期 key（忽略 stage 字段）。"""
+    if not isinstance(daily_payload, dict):
+        return None
+    for key in daily_payload.keys():
+        if key != "stage":
+            return key
+    return None
+
+
+def _is_daily_payload_empty(daily_payload: dict) -> bool:
+    """判断每日榜数据是否为空（两个赛道都为空视为无数据）。"""
+    date_key = _get_first_date_key(daily_payload)
+    if not date_key:
+        return True
+    day_data = daily_payload.get(date_key, {})
+    return not (day_data.get("lean_ranking") or day_data.get("litex_ranking"))
+
+
+def fetch_latest_daily_ranking(stage: str, preferred_date: str | None = None, lookback_days: int = 7):
+    """
+    获取最近有数据的一天的每日排行榜。
+
+    优先使用 preferred_date；若无或该日无数据，则从“今天”开始往回最多 lookback_days 天，
+    找到第一天有数据的日期并返回其 payload。
+    """
+    # 1) 如果指定了日期，优先尝试
+    if preferred_date:
+        data = fetch_daily_ranking(stage, preferred_date)
+        if data and not _is_daily_payload_empty(data):
+            print(f"  📅 使用指定日期: {preferred_date}")
+            return data
+        print(f"  ⚠️ 指定日期 {preferred_date} 无数据，回退到最近日期…")
+
+    # 2) 回退查找最近有数据的日期
+    tz_beijing = timezone(timedelta(hours=8))
+    for delta in range(0, max(0, lookback_days) + 1):
+        candidate = (datetime.now(tz_beijing) - timedelta(days=delta)).strftime('%Y-%m-%d')
+        data = fetch_daily_ranking(stage, candidate)
+        if data and not _is_daily_payload_empty(data):
+            print(f"  📅 使用日期: {candidate}")
+            return data
+
+    # 3) 实在没有，返回最后一次尝试的数据（可能为 None 或空）
+    return data
+
+
 def fetch_overall_ranking(stage=STAGE):
     """
     获取总排行榜
@@ -164,7 +211,7 @@ def merge_leaderboard_data(daily_data, overall_data):
     
     result = {
         "lastUpdated": now.isoformat(),
-        "stage": daily_data.get("stage", STAGE) if daily_data else STAGE,
+        "stage": daily_data.get("stage", "preliminary") if daily_data else "preliminary",
         "litex": {
             "daily": litex_daily,
             "overall": litex_overall
@@ -203,24 +250,27 @@ def main():
     print("=" * 60)
     print()
     
-    # 获取命令行参数（可选的 API Key 和 Stage）
+    # 获取命令行参数（可选的 API Key、Stage、Daily Date）
     if len(sys.argv) > 1:
         global API_KEY
         API_KEY = sys.argv[1]
         print(f"🔑 使用自定义 API Key")
     
     if len(sys.argv) > 2:
-        global STAGE
-        STAGE = sys.argv[2]
-        print(f"📋 使用比赛阶段: {STAGE}")
+        _ignored_stage = sys.argv[2]
+        print(f"📋 忽略传入阶段参数，固定：每日=preliminary，总榜=practice")
+    
+    daily_date_override = sys.argv[3] if len(sys.argv) > 3 else None
     
     print()
     
-    # 1. 获取每日排行榜
-    daily_data = fetch_daily_ranking(STAGE)
+    # 1. 获取每日排行榜（每日榜固定使用 preliminary；找最近有数据的日期）
+    daily_stage = "preliminary"
+    daily_data = fetch_latest_daily_ranking(daily_stage, preferred_date=daily_date_override, lookback_days=7)
     
-    # 2. 获取总排行榜
-    overall_data = fetch_overall_ranking(STAGE)
+    # 2. 获取总排行榜（总榜固定使用 practice）
+    overall_stage = "practice"
+    overall_data = fetch_overall_ranking(overall_stage)
     
     # 3. 检查是否至少有一个成功
     if not daily_data and not overall_data:
