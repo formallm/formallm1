@@ -1,0 +1,45 @@
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# 日志文件
+logs/
+*.log
+
+# 配置文件（包含敏感信息）
+server/config.sh
+.env
+
+# 临时文件
+*.tmp
+*.bak
+
+# Node.js (如果使用)
+node_modules/
+npm-debug.log
+
+# 构建产物
+dist/
+build/
+
+# 备份文件
+*.backup
+backup/
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- 英文首页（默认） -->
+  <url>
+    <loc>https://example.org/formsci-2025/index.html</loc>
+    <lastmod>2025-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 英文关于页 -->
+  <url>
+    <loc>https://example.org/formsci-2025/about.html</loc>
+    <lastmod>2025-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- 英文赛题下载 -->
+  <url>
+    <loc>https://example.org/formsci-2025/downloads.html</loc>
+    <lastmod>2025-10-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- 英文排行榜 -->
+  <url>
+    <loc>https://example.org/formsci-2025/leaderboard.html</loc>
+    <lastmod>2025-10-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- 中文首页 -->
+  <url>
+    <loc>https://example.org/formsci-2025/cn/index.html</loc>
+    <lastmod>2025-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 中文关于页 -->
+  <url>
+    <loc>https://example.org/formsci-2025/cn/about.html</loc>
+    <lastmod>2025-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- 中文赛题下载 -->
+  <url>
+    <loc>https://example.org/formsci-2025/cn/downloads.html</loc>
+    <lastmod>2025-10-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- 中文排行榜 -->
+  <url>
+    <loc>https://example.org/formsci-2025/cn/leaderboard.html</loc>
+    <lastmod>2025-10-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+</urlset>
