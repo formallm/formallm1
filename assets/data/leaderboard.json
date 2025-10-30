@@ -1,160 +1,140 @@
 {
-  "lastUpdated": "2025-10-30T08:00:00+08:00",
+  "lastUpdated": "2025-10-30T21:59:02.000252+08:00",
   "stage": "preliminary",
   "litex": {
     "daily": [
       {
         "rank": 1,
-        "teamName": "XiRer_9b0a42",
-        "teamId": "358522",
-        "score": 87.0,
-        "members": "L",
-        "submitTime": "2025-10-25 11:46",
-        "submissionCount": 2
+        "teamName": "我是yxw",
+        "teamId": "357485",
+        "score": 36.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
       },
       {
         "rank": 2,
-        "teamName": "Lean说的都队",
-        "teamId": "358316",
-        "score": 82.0,
-        "members": "袁 李 刘 李 谢",
-        "submitTime": "2025-10-27 13:37",
-        "submissionCount": 3
+        "teamName": "XiRer_2acb39",
+        "teamId": "358547",
+        "score": 0.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
       },
       {
         "rank": 3,
-        "teamName": "Howie Zhou",
-        "teamId": "359001",
-        "score": 75.0,
-        "members": "H",
-        "submitTime": "2025-10-24 16:24",
-        "submissionCount": 2
-      }
-    ],
-    "overall": [
-      {
-        "rank": 1,
-        "teamName": "XiRer_9b0a42",
-        "teamId": "358522",
-        "score": 87.0,
-        "members": "L",
-        "submitTime": "2025-10-25 11:46",
-        "submissionCount": 2
-      },
-      {
-        "rank": 2,
-        "teamName": "Lean说的都队",
-        "teamId": "358316",
-        "score": 82.0,
-        "members": "袁 李 刘 李 谢",
-        "submitTime": "2025-10-27 13:37",
-        "submissionCount": 3
-      },
-      {
-        "rank": 3,
-        "teamName": "Howie Zhou",
-        "teamId": "359001",
-        "score": 75.0,
-        "members": "H",
-        "submitTime": "2025-10-24 16:24",
-        "submissionCount": 2
+        "teamName": "XiRer_715790",
+        "teamId": "360312",
+        "score": 0.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
       },
       {
         "rank": 4,
-        "teamName": "不知道叫什么队",
-        "teamId": "359102",
-        "score": 73.0,
-        "members": "X X C",
-        "submitTime": "2025-10-28 19:02",
-        "submissionCount": 5
-      },
-      {
-        "rank": 5,
-        "teamName": "大笨狗爱学AI",
-        "teamId": "359205",
-        "score": 64.0,
-        "members": "X x X",
-        "submitTime": "2025-10-26 10:04",
-        "submissionCount": 1
+        "teamName": "XiRer_ca169b",
+        "teamId": "359210",
+        "score": 0.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
       }
-    ]
+    ],
+    "overall": []
   },
   "lean": {
     "daily": [
       {
         "rank": 1,
-        "teamName": "Lean先锋队",
-        "teamId": "359478",
-        "score": 92.0,
-        "members": "张 王 李",
-        "submitTime": "2025-10-29 14:32",
-        "submissionCount": 4
+        "teamName": "Lean说的都队",
+        "teamId": "358316",
+        "score": 93.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
       },
       {
         "rank": 2,
-        "teamName": "形式化小组",
-        "teamId": "359580",
-        "score": 88.5,
-        "members": "赵 钱 孙",
-        "submitTime": "2025-10-29 16:20",
-        "submissionCount": 3
+        "teamName": "XiRer_21cf87",
+        "teamId": "358403",
+        "score": 55.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
       },
       {
         "rank": 3,
-        "teamName": "证明大师",
-        "teamId": "359682",
-        "score": 81.0,
-        "members": "周 吴",
-        "submitTime": "2025-10-29 10:15",
-        "submissionCount": 2
-      }
-    ],
-    "overall": [
-      {
-        "rank": 1,
-        "teamName": "Lean先锋队",
-        "teamId": "359478",
-        "score": 92.0,
-        "members": "张 王 李",
-        "submitTime": "2025-10-29 14:32",
-        "submissionCount": 4
-      },
-      {
-        "rank": 2,
-        "teamName": "形式化小组",
-        "teamId": "359580",
-        "score": 88.5,
-        "members": "赵 钱 孙",
-        "submitTime": "2025-10-29 16:20",
-        "submissionCount": 3
-      },
-      {
-        "rank": 3,
-        "teamName": "证明大师",
-        "teamId": "359682",
-        "score": 81.0,
-        "members": "周 吴",
-        "submitTime": "2025-10-29 10:15",
-        "submissionCount": 2
+        "teamName": "我不是zcd",
+        "teamId": "357796",
+        "score": 44.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
       },
       {
         "rank": 4,
-        "teamName": "数学推理团",
-        "teamId": "359784",
-        "score": 76.5,
-        "members": "郑 陈 冯",
-        "submitTime": "2025-10-28 22:45",
-        "submissionCount": 6
+        "teamName": "XiRer_6b64d7",
+        "teamId": "358522",
+        "score": 39.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
       },
       {
         "rank": 5,
-        "teamName": "逻辑战队",
-        "teamId": "359886",
-        "score": 72.0,
-        "members": "褚 卫 蒋",
-        "submitTime": "2025-10-27 18:30",
-        "submissionCount": 5
+        "teamName": "未知队伍",
+        "teamId": "360611",
+        "score": 39.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 6,
+        "teamName": "跟我的提示词说去吧",
+        "teamId": "357606",
+        "score": 24.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 7,
+        "teamName": "XiRer_9026f6",
+        "teamId": "358832",
+        "score": 6.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 8,
+        "teamName": "HaHa_aHaH",
+        "teamId": "360468",
+        "score": 3.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 9,
+        "teamName": "DoIt",
+        "teamId": "358387",
+        "score": 0.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 10,
+        "teamName": "未知队伍",
+        "teamId": "358245",
+        "score": 0.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
       }
-    ]
+    ],
+    "overall": []
   }
 }
