@@ -68,9 +68,9 @@
       <div class="container">
         <a href="index.html" class="brand" aria-label="返回首页">
           <span class="logo">
-            <img src="../assets/img/favicon.svg" alt="FormSci 标志" width="24" height="24">
+            <img src="../assets/img/favicon.svg" alt="ForMaLLM 标志" width="24" height="24">
           </span>
-          <span class="brand-text">FormSci Challenge 2025</span>
+          <span class="brand-text">ForMaLLM Challenge 2025</span>
         </a>
 
         <nav class="nav" aria-label="主导航">
@@ -78,9 +78,9 @@
             <span class="bar"></span><span class="bar"></span><span class="bar"></span>
           </button>
           <ul id="nav-menu" class="nav-menu">
-            <li><a href="about.html">关于</a></li>
             <li><a href="downloads.html">赛题下载</a></li>
-            <li><a href="leaderboard.html">排行榜</a></li>
+            <li><a href="leaderboard-latex.html">LaTeX 排行榜</a></li>
+            <li><a href="leaderboard-lean.html">Lean 排行榜</a></li>
           </ul>
         </nav>
         <a class="btn primary small" href="https://www.xir.cn/competitions/1143" target="_blank" rel="noreferrer noopener">立即参与</a>
@@ -100,7 +100,7 @@
             <p class="subhead">面向大模型形式数学推理能力的创新竞赛，推动模型在形式化数学上的可验证推理能力。</p>
 
             <div class="hero-cta">
-              <a class="btn primary" href="about.html">了解详情</a>
+              <a class="btn primary" href="leaderboard-latex.html">查看排行榜</a>
               <a class="btn" href="https://www.xir.cn/competitions/1143" target="_blank" rel="noreferrer noopener">前往 XIR 报名</a>
             </div>
 
@@ -132,113 +132,20 @@
         </div>
       </section>
 
-      <!-- 首页内横向目录（统一UI） -->
-      <section class="section">
-        <div class="container">
-          <nav class="subnav" aria-label="本页导航">
-            <a href="#home-why">为何参与</a>
-            <a href="#home-tracks">赛道一览</a>
-            <a href="#home-dates">关键日期</a>
-            <a href="#home-awards">奖项速览</a>
-            <a href="#home-org">组织与支持</a>
-            <a href="#home-faq">FAQ 精选</a>
-          </nav>
-        </div>
-      </section>
+      
 
-      <!-- 首页关键模块 -->
-      <section id="home-why" class="section alt reveal">
+      <!-- 今日赛题，仅保留本模块 -->
+      <section id="today" class="section reveal">
         <div class="container">
-          <h2 class="section-title">为何参与</h2>
-          <p class="lead">面向“可证与可控”的下一代 AI，与顶尖团队同台竞技，产出可复现、可审计与可落地的研究与系统成果。</p>
-          <div class="grid cards three home-highlights">
-            <article class="card">
-              <h3>高影响议题</h3>
-              <p>聚焦自动定理证明、科学发现代理、多模态符号推理、程序合成与验证等前沿方向。</p>
-            </article>
-            <article class="card">
-              <h3>系统化评测</h3>
-              <p>多维度度量正确性、鲁棒性与可追溯性，强调端到端流程与规范产物。</p>
-            </article>
-            <article class="card">
-              <h3>丰厚激励</h3>
-              <p>设立总冠军、赛道冠军与特别奖，提供展示与合作机会。</p>
-            </article>
+          <h2 class="section-title">今日赛题</h2>
+          <div class="card">
+            <p class="lead">今日赛题与数据请前往“赛题下载”页面获取。</p>
+            <p class="mt-12"><a class="btn primary" href="downloads.html">查看今日赛题</a></p>
           </div>
         </div>
       </section>
 
-      <section id="home-tracks" class="section reveal">
-        <div class="container">
-          <h2 class="section-title">赛道一览</h2>
-          <div class="grid cards three">
-            <article class="card"><h3>自动定理证明</h3><p>模型辅助的证明策略与工具链协同。</p></article>
-            <article class="card"><h3>科学发现代理</h3><p>从文献到实验的端到端科学研究代理。</p></article>
-            <article class="card"><h3>多模态符号推理</h3><p>跨文本/图表/方程的符号抽取与可验证推理。</p></article>
-          </div>
-          <p><a class="btn" href="about.html">了解更多</a></p>
-        </div>
-      </section>
-
-      <section id="home-dates" class="section alt reveal">
-        <div class="container">
-          <h2 class="section-title">关键日期</h2>
-          <ol class="timeline">
-            <li class="timeline-item"><div class="time">10-20</div><div class="content"><h4>比赛启动</h4></div></li>
-            <li class="timeline-item"><div class="time">10-20 至 10-30</div><div class="content"><h4>练习赛</h4></div></li>
-            <li class="timeline-item"><div class="time">11-03 至 11-28</div><div class="content"><h4>初赛</h4></div></li>
-            <li class="timeline-item"><div class="time">12-04 至 12-05</div><div class="content"><h4>决赛</h4></div></li>
-            <li class="timeline-item"><div class="time">12-31</div><div class="content"><h4>结束</h4></div></li>
-          </ol>
-        </div>
-      </section>
-
-      <section id="home-awards" class="section reveal">
-        <div class="container">
-          <h2 class="section-title">奖项速览</h2>
-          <div class="card"><h3>总奖金池</h3><div class="prize text-xl">¥ 100,000</div></div>
-        </div>
-      </section>
-
-      <section id="home-org" class="section alt reveal">
-        <div class="container">
-          <h2 class="section-title">组织与支持</h2>
-          <div class="grid two home-org">
-            <div>
-              <p class="lead">由中国计算机学会（CCF）主办，协同产业与学术伙伴，共同推动"形式化数学 × AI"的发展。</p>
-              <p><a class="btn" href="about.html">了解更多</a></p>
-            </div>
-            <div class="card">
-              <h3>联系我们</h3>
-              <p>如有任何问题或合作意向，请访问关于页面了解详情。</p>
-              <p><a class="btn" href="about.html">联系我们</a></p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="home-faq" class="section reveal">
-        <div class="container">
-          <h2 class="section-title">FAQ 精选</h2>
-          <details class="faq"><summary>是否必须开源代码？</summary><p>决赛队伍需提供可复现工件，开源条款以最终指南为准。</p></details>
-          <details class="faq"><summary>可以同时参与多个赛道吗？</summary><p>可以，但需分别提交并符合规范。</p></details>
-          <p><a class="btn" href="about.html">查看更多信息</a></p>
-        </div>
-      </section>
-
-      <section class="section alt reveal cta-band">
-        <div class="container">
-          <div class="grid two">
-            <div>
-              <h2 class="section-title">准备好了吗？</h2>
-              <p class="lead">现在报名，获取指南与基线代码，开启你的可证智能之旅。</p>
-            </div>
-            <div class="cta-actions">
-              <a class="btn primary" href="https://www.xir.cn/competitions/1143" target="_blank" rel="noreferrer noopener">立即参与</a>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
     </main>
 
@@ -248,7 +155,9 @@
       <div class="container">
         <p>© 2025 CCF大数据与计算智能大赛</p>
         <nav aria-label="页脚导航">
-          <a href="about.html">关于</a>
+          <a href="downloads.html">赛题下载</a>
+          <a href="leaderboard-latex.html">LaTeX 排行榜</a>
+          <a href="leaderboard-lean.html">Lean 排行榜</a>
         </nav>
       </div>
     </footer>

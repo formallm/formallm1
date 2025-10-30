@@ -165,30 +165,45 @@
   }
 
   function renderInto(mount, data){
-    // datasets, examples
-    const list1 = renderList('赛题数据', data.datasets);
-    const list2 = renderList('示例程序', data.examples);
-    if(list1) mount.append(list1);
-    if(list2) mount.append(list2);
-    // events
-    const ev = renderEvents(data.events);
-    if(ev) mount.append(ev);
-    // docs
-    const docs = renderDocs(data.docs);
-    if(docs) mount.append(docs);
-    // notices
-    const notices = renderNotices(data.notices);
-    if(notices) mount.append(notices);
-    // sample
-    mount.append(el('h3', {class:'mt-16'}, [document.createTextNode('示例 JSONL 片段')]));
-    const sample = renderSample(data.sample);
-    if(sample) mount.append(sample);
-    // submission rules
-    const sub = renderSubmission(data.submission);
-    if(sub) mount.append(sub);
-    // fairplay
-    const fair = renderFairplay(data.fairplay);
-    if(fair) mount.append(fair);
+    // 仅保留“今日赛题”
+    const lang = (document.documentElement.getAttribute('lang') || '').toLowerCase().startsWith('en') ? 'en' : 'zh';
+    const today = (function(){
+      const d = new Date();
+      const y = d.getFullYear();
+      const m = String(d.getMonth()+1).padStart(2,'0');
+      const dd = String(d.getDate()).padStart(2,'0');
+      return y+'-'+m+'-'+dd;
+    })();
+    const highlightP = document.querySelector('#downloads .card.highlight p');
+
+    const firstBlock = (data && Array.isArray(data.datasets) && data.datasets.length) ? data.datasets[0] : null;
+    const ts = firstBlock && typeof firstBlock.timestamp === 'string' ? firstBlock.timestamp.slice(0,10) : null;
+    const items = firstBlock && Array.isArray(firstBlock.items) ? firstBlock.items : [];
+    const hasToday = (ts === today) && items.length > 0;
+
+    if(hasToday){
+      if(highlightP){
+        highlightP.textContent = lang==='en' ? "Today's challenge is published. See files below." : '今日赛题已发布，请查看下方文件。';
+      }
+      const card = el('div', {class:'card'});
+      card.append(el('h3', {}, [document.createTextNode(lang==='en' ? "Today's Challenge" : '今日赛题')]));
+      const ul = el('ul', {class:'disc'});
+      for(const item of items){
+        const href = (item.local && String(item.local).trim()) ? item.local : item.url;
+        const a = el('a', {href: href || '#', target: href && href.startsWith('http') ? '_blank' : null, rel: href && href.startsWith('http') ? 'noreferrer noopener' : null}, [document.createTextNode(item.name)]);
+        const li = el('li');
+        li.append(a);
+        if(item.md5){ li.append(el('span', {class:'text-muted', style:'margin-left:8px'}, [document.createTextNode('MD5: '+item.md5)])); }
+        ul.append(li);
+      }
+      card.append(ul);
+      mount.append(card);
+    }else{
+      if(highlightP){
+        highlightP.textContent = lang==='en' ? "Today's challenge is not yet updated." : '今日赛题还未更新，请稍后再来。';
+      }
+      mount.append(el('p', {class:'text-muted'}, [document.createTextNode(lang==='en' ? 'No files available yet.' : '暂无可下载文件。')]));
+    }
   }
 
   async function main(){

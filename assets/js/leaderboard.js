@@ -32,6 +32,20 @@
       return Array.from(new Set(candidates));
     },
 
+    // file:// 场景：尝试从页面内嵌 JSON 读取
+    readInline() {
+      try {
+        const node = document.getElementById('leaderboard-data');
+        if (!node) return null;
+        const text = (node.textContent || node.innerText || '').trim();
+        if (!text) return null;
+        return JSON.parse(text);
+      } catch (err) {
+        console.error('内嵌排行榜 JSON 解析失败', err);
+        return null;
+      }
+    },
+
     /**
      * 获取排行榜数据
      * 仅从外部 JSON 加载，不再回退到页面内嵌数据
@@ -39,6 +53,15 @@
     async fetch() {
       if (this.cache) {
         return this.cache;
+      }
+
+      // file:// 本地预览时优先尝试内嵌数据
+      if (location.protocol === 'file:') {
+        const inlineFirst = this.readInline();
+        if (inlineFirst) {
+          this.cache = inlineFirst;
+          return inlineFirst;
+        }
       }
 
       // 依次尝试多个候选地址
@@ -55,6 +78,14 @@
           // 忽略，继续尝试下一个候选
         }
       }
+
+      // 通用兜底：若页面内提供了内嵌数据则使用
+      const inline = this.readInline();
+      if (inline) {
+        this.cache = inline;
+        return inline;
+      }
+
       console.error('无法加载排行榜数据。尝试过的地址：', urls);
       return null;
     },
