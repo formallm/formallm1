@@ -6,7 +6,7 @@
 #   3. 在脚本中加载: source config.sh
 
 # API 配置
-export API_BASE_URL="http://121.41.231.229"
+export API_BASE_URL="http://121.43.230.124"
 export API_KEY="your_api_key_here"
 
 # 比赛阶段
@@ -18,7 +18,7 @@ export GITHUB_USER="your-username"
 export GITHUB_EMAIL="your-email@example.com"
 
 # 仓库配置
-export REPO_PATH="/var/www/alailab"
+export REPO_PATH="/var/www/formallm1"
 export BRANCH="main"
 
 # 日志配置

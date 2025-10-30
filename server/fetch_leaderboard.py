@@ -11,11 +11,11 @@ import sys
 from datetime import datetime, timezone, timedelta
 
 # API 配置
-API_BASE_URL = "http://121.41.231.229"
-API_KEY = "default_api_key"  # 请替换为您的真实 API Key
+API_BASE_URL = os.getenv("FORMALLM_API_BASE", "http://121.43.230.124")
+API_KEY = os.getenv("FORMALLM_API_KEY", "default_api_key")  # 请替换为您的真实 API Key
 
 # 比赛阶段（preliminary 或 practice）
-STAGE = "preliminary"
+STAGE = os.getenv("FORMALLM_STAGE", "preliminary")
 
 # 输出文件路径（相对于仓库根目录）
 OUTPUT_FILE = "assets/data/leaderboard.json"

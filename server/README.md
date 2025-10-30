@@ -199,10 +199,10 @@ chmod 600 ~/.git-credentials
 **解决：**
 ```bash
 # 测试 API 连接
-curl -H "X-API-Key: your_api_key" "http://121.41.231.229/ranking_list/daily?stage=preliminary&dt=2025-10-30"
+curl -H "X-API-Key: your_api_key" "http://121.43.230.124/ranking_list/daily?stage=preliminary&dt=2025-10-30"
 
 # 检查网络
-ping 121.41.231.229
+ping 121.43.230.124
 ```
 
 ### 问题 3：定时任务未执行

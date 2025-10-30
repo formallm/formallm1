@@ -15,7 +15,7 @@ set -e  # 遇到错误立即退出
 # ==================== 配置区 ====================
 
 # GitHub 仓库信息
-REPO_DIR="/var/www/alailab"  # 仓库本地路径（请修改为您的实际路径）
+REPO_DIR="/var/www/formallm1"  # 仓库本地路径（请修改为您的实际路径）
 BRANCH="main"                 # 推送的分支
 
 # API 配置

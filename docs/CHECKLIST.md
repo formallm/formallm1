@@ -121,13 +121,13 @@ git push --dry-run
 ### API 配置
 
 - [ ] API Key 正确
-- [ ] API 端点可以访问 (`http://121.41.231.229`)
+- [ ] API 端点可以访问 (`http://121.43.230.124`)
 - [ ] 比赛阶段参数正确（`preliminary` 或 `practice`）
 
 验证：
 ```bash
 curl -H "X-API-Key: your_api_key" \
-  "http://121.41.231.229/ranking_list/daily?stage=preliminary&dt=$(date +%Y-%m-%d)"
+  "http://121.43.230.124/ranking_list/daily?stage=preliminary&dt=$(date +%Y-%m-%d)"
 ```
 
 ## 📝 文档和资源
