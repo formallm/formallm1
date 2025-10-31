@@ -10,9 +10,9 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- 英文排行榜（LaTeX） -->
+  <!-- 英文排行榜（LiTeX） -->
   <url>
-    <loc>https://example.org/formsci-2025/leaderboard-latex.html</loc>
+    <loc>https://example.org/formsci-2025/leaderboard-litex.html</loc>
     <lastmod>2025-10-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -49,9 +49,9 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- 中文排行榜（LaTeX） -->
+  <!-- 中文排行榜（LiTeX） -->
   <url>
-    <loc>https://example.org/formsci-2025/cn/leaderboard-latex.html</loc>
+    <loc>https://example.org/formsci-2025/cn/leaderboard-litex.html</loc>
     <lastmod>2025-10-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>

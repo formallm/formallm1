@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>LiTeX 排行榜 - ForMaLLM Challenge</title>
+    <meta name="description" content="查看 LiTeX 赛道的实时排名，包含今日榜与总榜。">
+    <meta name="keywords" content="排行榜,竞赛排名,形式化数学,litex">
+    
+    <!-- SEO: language alternates and theme color -->
+    <link rel="alternate" hreflang="zh-CN" href="leaderboard-litex.html">
+    <link rel="alternate" hreflang="en" href="../en/leaderboard-litex.html">
+    <meta name="theme-color" content="#0b1221" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="LiTeX 排行榜 - ForMaLLM Challenge 2025">
+    <meta property="og:description" content="查看 LiTeX 赛道实时排名">
+    <meta property="og:image" content="../assets/img/og-cover.svg">
+    <meta property="og:url" content="leaderboard-litex.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="../assets/img/og-cover.svg">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+    <link rel="stylesheet" href="../assets/css/style.css">
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <a class="skip-link" href="#main">跳到主内容</a>
+    
+    <header class="site-header" id="top">
+      <div class="container">
+        <a href="index.html" class="brand" aria-label="回到首页">
+          <span class="logo">
+            <img src="../assets/img/favicon.svg" alt="ForMaLLM 标志" width="24" height="24">
+          </span>
+          <span class="brand-text">ForMaLLM Challenge 2025</span>
+        </a>
+
+        <nav class="nav" aria-label="主导航">
+          <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="切换导航">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+          </button>
+          <ul id="nav-menu" class="nav-menu">
+            <li><a href="downloads.html">赛题下载</a></li>
+            <li><a href="leaderboard-litex.html" aria-current="page">LiTeX 排行榜</a></li>
+            <li><a href="leaderboard-lean.html">Lean 排行榜</a></li>
+          </ul>
+        </nav>
+        <a class="btn primary small" href="https://www.xir.cn/competitions/1143" target="_blank" rel="noreferrer noopener">立即报名</a>
+        <a class="btn ghost small" href="../en/leaderboard-litex.html" hreflang="en" lang="en" rel="alternate">EN</a>
+        <button id="themeToggle" class="btn ghost small" aria-label="切换主题">主题</button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section">
+        <div class="container">
+          <h1 class="section-title">LiTeX 排行榜</h1>
+          <p class="lead">LiTeX 赛道的实时竞赛排名，每日自动刷新。</p>
+
+          <!-- LiTeX 赛道 -->
+          <div class="card mt-24">
+            <h2 style="text-align:center;margin-bottom:20px;">🏆 LiTeX 赛道</h2>
+            <div id="litex-leaderboard">
+              <p class="text-center text-muted">正在加载 LiTeX 赛道排行榜...</p>
+            </div>
+          </div>
+
+          <p class="text-muted text-center mt-24" style="font-size:14px;">
+            排行榜数据每日更新，最终排名以官方公告为准。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 蚂蚁数科 &amp; 中国计算机学会（CCF）. 保留所有权利.</p>
+        <nav aria-label="次级导航">
+          <a href="downloads.html">赛题下载</a>
+          <a href="leaderboard-litex.html">LiTeX 排行榜</a>
+          <a href="leaderboard-lean.html">Lean 排行榜</a>
+        </nav>
+      </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+    <script src="../assets/js/main.js"></script>
+    <script id="leaderboard-data" type="application/json">{"lastUpdated":"2025-10-31T00:56:47.225054+08:00","stage":"preliminary","litex":{"daily":[{"rank":1,"teamName":"我是yxw","teamId":"357485","score":36.0,"members":"","submitTime":"","submissionCount":0},{"rank":2,"teamName":"XiRer_2acb39","teamId":"358547","score":0.0,"members":"","submitTime":"","submissionCount":0},{"rank":3,"teamName":"XiRer_715790","teamId":"360312","score":0.0,"members":"","submitTime":"","submissionCount":0},{"rank":4,"teamName":"XiRer_ca169b","teamId":"359210","score":0.0,"members":"","submitTime":"","submissionCount":0}],"overall":[{"rank":1,"teamName":"XiRer_9b0a42","teamId":"358714","score":87.0,"members":"","submitTime":"","submissionCount":0},{"rank":2,"teamName":"Howie Zhou","teamId":"358783","score":75.0,"members":"","submitTime":"","submissionCount":0},{"rank":3,"teamName":"不知道叫什么队","teamId":"357742","score":73.0,"members":"","submitTime":"","submissionCount":0},{"rank":4,"teamName":"大笨狗爱学AI","teamId":"359478","score":64.0,"members":"","submitTime":"","submissionCount":0},{"rank":5,"teamName":"XiRer_aad4b3","teamId":"358833","score":59.0,"members":"","submitTime":"","submissionCount":0},{"rank":6,"teamName":"钱来","teamId":"358911","score":55.0,"members":"","submitTime":"","submissionCount":0},{"rank":7,"teamName":"XiRer_aea65e","teamId":"358762","score":53.0,"members":"","submitTime":"","submissionCount":0},{"rank":8,"teamName":"橘子味盐汽水","teamId":"358782","score":53.0,"members":"","submitTime":"","submissionCount":0},{"rank":9,"teamName":"未知队伍","teamId":"358723","score":40.0,"members":"","submitTime":"","submissionCount":0},{"rank":10,"teamName":"能不能不做强化学习","teamId":"358478","score":39.0,"members":"","submitTime":"","submissionCount":0},{"rank":11,"teamName":"我是yxw","teamId":"357485","score":36.0,"members":"","submitTime":"","submissionCount":0},{"rank":12,"teamName":"XiRer_18496c","teamId":"359171","score":32.0,"members":"","submitTime":"","submissionCount":0},{"rank":13,"teamName":"三个人一休尼","teamId":"358036","score":28.0,"members":"","submitTime":"","submissionCount":0},{"rank":14,"teamName":"我不是zcd","teamId":"357796","score":7.0,"members":"","submitTime":"","submissionCount":0},{"rank":15,"teamName":"证算先锋","teamId":"358644","score":7.0,"members":"","submitTime":"","submissionCount":0},{"rank":16,"teamName":"紧握你手","teamId":"357970","score":1.0,"members":"","submitTime":"","submissionCount":0},{"rank":17,"teamName":"DoIt","teamId":"358387","score":1.0,"members":"","submitTime":"","submissionCount":0},{"rank":18,"teamName":"XiRer_1bd416","teamId":"358562","score":0.0,"members":"","submitTime":"","submissionCount":0},{"rank":19,"teamName":"XiRer_2acb39","teamId":"358547","score":0.0,"members":"","submitTime":"","submissionCount":0},{"rank":20,"teamName":"XiRer_ca169b","teamId":"359210","score":0.0,"members":"","submitTime":"","submissionCount":0},{"rank":21,"teamName":"XiRer_005813","teamId":"359084","score":0.0,"members":"","submitTime":"","submissionCount":0},{"rank":22,"teamName":"XiRer_715790","teamId":"360312","score":0.0,"members":"","submitTime":"","submissionCount":0},{"rank":23,"teamName":"复旦梦之队","teamId":"358831","score":0.0,"members":"","submitTime":"","submissionCount":0}]},"lean":{"daily":[{"rank":1,"teamName":"Lean说的都队","teamId":"358316","score":93.0,"members":"","submitTime":"","submissionCount":0},{"rank":2,"teamName":"XiRer_21cf87","teamId":"358403","score":55.0,"members":"","submitTime":"","submissionCount":0},{"rank":3,"teamName":"我不是zcd","teamId":"357796","score":44.0,"members":"","submitTime":"","submissionCount":0},{"rank":4,"teamName":"XiRer_6b64d7","teamId":"358522","score":39.0,"members":"","submitTime":"","submissionCount":0},{"rank":5,"teamName":"未知队伍","teamId":"360611","score":39.0,"members":"","submitTime":"","submissionCount":0},{"rank":6,"teamName":"跟我的提示词说去吧","teamId":"357606","score":24.0,"members":"","submitTime":"","submissionCount":0},{"rank":7,"teamName":"XiRer_9026f6","teamId":"358832","score":6.0,"members":"","submitTime":"","submissionCount":0},{"rank":8,"teamName":"HaHa_aHaH","teamId":"360468","score":3.0,"members":"","submitTime":"","submissionCount":0},{"rank":9,"teamName":"DoIt","teamId":"358387","score":0.0,"members":"","submitTime":"","submissionCount":0},{"rank":10,"teamName":"未知队伍","teamId":"358245","score":0.0,"members":"","submitTime":"","submissionCount":0}],"overall":[{"rank":1,"teamName":"Lean说的都队","teamId":"358316","score":93.0,"members":"","submitTime":"","submissionCount":0},{"rank":2,"teamName":"XiRer_21cf87","teamId":"358403","score":55.0,"members":"","submitTime":"","submissionCount":0},{"rank":3,"teamName":"toptop","teamId":"358812","score":51.0,"members":"","submitTime":"","submissionCount":0},{"rank":4,"teamName":"鼠鼠地下站","teamId":"360107","score":49.0,"members":"","submitTime":"","submissionCount":0},{"rank":5,"teamName":"我不是zcd","teamId":"357796","score":44.0,"members":"","submitTime":"","submissionCount":0},{"rank":6,"teamName":"Step 2","teamId":"357598","score":43.0,"members":"","submitTime":"","submissionCount":0},{"rank":7,"teamName":"XiRer_6b64d7","teamId":"358522","score":40.0,"members":"","submitTime":"","submissionCount":0},{"rank":8,"teamName":"未知队伍","teamId":"360611","score":39.0,"members":"","submitTime":"","submissionCount":0},{"rank":9,"teamName":"Lean Baseline","teamId":"358717","score":33.0,"members":"","submitTime":"","submissionCount":0},{"rank":10,"teamName":"DF1663141996808","teamId":"358266","score":26.0,"members":"","submitTime":"","submissionCount":0},{"rank":11,"teamName":"XiRer_9026f6","teamId":"358832","score":25.0,"members":"","submitTime":"","submissionCount":0},{"rank":12,"teamName":"XiRer_3d5c20","teamId":"357477","score":25.0,"members":"","submitTime":"","submissionCount":0},{"rank":13,"teamName":"跟我的提示词说去吧","teamId":"357606","score":24.0,"members":"","submitTime":"","submissionCount":0},{"rank":14,"teamName":"XiRer_6be8ce","teamId":"359578","score":24.0,"members":"","submitTime":"","submissionCount":0},{"rank":15,"teamName":"scut_tucs","teamId":"357505","score":22.0,"members":"","submitTime":"","submissionCount":0},{"rank":16,"teamName":"未命名","teamId":"357812","score":14.0,"members":"","submitTime":"","submissionCount":0},{"rank":17,"teamName":"证算先锋","teamId":"358644","score":5.0,"members":"","提交":"","submissionCount":0},{"rank":18,"teamName":"HaHa_aHaH","teamId":"360468","score":3.0,"members":"","submitTime":"","submissionCount":0},{"rank":19,"teamName":"XiRer_a62ab5","teamId":"358616","score":3.0,"members":"","submitTime":"","submissionCount":0},{"rank":20,"teamName":"3CMEP","teamId":"358802","score":2.0,"members":"","submitTime":"","submissionCount":0},{"rank":21,"teamName":"XiRer_52e59d","teamId":"360092","score":1.0,"members":"","submitTime":"","submissionCount":0},{"rank":22,"teamName":"XiRer_2acb39","teamId":"358547","score":0.0,"members":"","提交":"","submissionCount":0},{"rank":23,"teamName":"DoIt","teamId":"358387","score":0.0,"members":"","submitTime":"","submissionCount":0},{"rank":24,"teamName":"未知队伍","teamId":"358245","score":0.0,"members":"","submitTime":"","submissionCount":0}]}}</script>
+    <script src="../assets/js/leaderboard.js"></script>
+  </body>
+</html>
+
+
+
