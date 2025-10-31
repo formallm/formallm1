@@ -93,7 +93,7 @@ crontab -e
 
 ### fetch_leaderboard.py
 
-从 ForMaLLM 竞赛 API 获取排行榜数据。
+从 FormaLLM 竞赛 API 获取排行榜数据。
 
 **使用方法：**
 ```bash

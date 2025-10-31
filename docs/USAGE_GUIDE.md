@@ -1,4 +1,4 @@
-# ForMaLLM 竞赛网站使用指南
+# FormaLLM 竞赛网站使用指南
 
 ## 📚 目录
 
@@ -10,7 +10,7 @@
 
 ## 概览
 
-ForMaLLM 竞赛网站由以下部分组成：
+FormaLLM 竞赛网站由以下部分组成：
 
 1. **静态网站** - 托管在 GitHub Pages
 2. **排行榜数据** - 从 API 自动获取并更新
@@ -25,7 +25,7 @@ ForMaLLM 竞赛网站由以下部分组成：
                          ↑
         云服务器/GitHub Actions
                          ↑
-                    ForMaLLM API
+                    FormaLLM API
 ```
 
 ## 访问网站

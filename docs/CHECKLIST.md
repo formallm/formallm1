@@ -1,6 +1,6 @@
 # ✅ 部署检查清单
 
-使用此清单确保您的 ForMaLLM 竞赛网站部署完整且正常工作。
+使用此清单确保您的 FormaLLM 竞赛网站部署完整且正常工作。
 
 ## 📋 GitHub Pages 部署
 
@@ -206,7 +206,7 @@ curl -H "X-API-Key: your_api_key" \
 
 ## 🎉 完成！
 
-恭喜！您已成功部署 ForMaLLM 竞赛网站。
+恭喜！您已成功部署 FormaLLM 竞赛网站。
 
 ### 下一步
 

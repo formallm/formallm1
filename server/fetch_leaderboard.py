@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 排行榜数据获取脚本
-从 ForMaLLM 竞赛 API 获取排行榜数据并保存为 JSON
+从 FormaLLM 竞赛 API 获取排行榜数据并保存为 JSON
 """
 
 import requests
@@ -246,7 +246,7 @@ def save_json(data, filepath):
 def main():
     """主函数"""
     print("=" * 60)
-    print("🏆 ForMaLLM 竞赛排行榜数据获取")
+    print("🏆 FormaLLM 竞赛排行榜数据获取")
     print("=" * 60)
     print()
     

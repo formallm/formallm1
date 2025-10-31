@@ -1,5 +1,5 @@
 #!/bin/bash
-# ForMaLLM 竞赛排行榜配置示例
+# FormaLLM 竞赛排行榜配置示例
 # 使用方法：
 #   1. 复制此文件为 config.sh: cp config.example.sh config.sh
 #   2. 修改 config.sh 中的值
