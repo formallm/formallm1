@@ -6,8 +6,16 @@
    * 支持两个赛道：Litex 和 Lean
    * 每个赛道可以切换：今日排行榜 ↔ 总排行榜
    * 现阶段为练习赛
+   * 
+   * ⚙️ 如何重新启用"今日榜"功能：
+   *    找到下方的 showDailyRanking 配置项，将其值从 false 改为 true 即可
    */
   const LeaderboardAPI = {
+    // ========== 配置区 ==========
+    // 是否显示"今日榜"功能（设为 false 暂时隐藏，设为 true 重新显示）
+    showDailyRanking: false,
+    // ===========================
+    
     // 数据源 URL（可配置为云端接口）
     dataURL: 'assets/data/leaderboard.json',
     
@@ -136,6 +144,17 @@
      * 渲染单个赛道（包含切换功能）
      */
     renderTrack(container, trackId, trackData, isEn) {
+      // 如果禁用今日榜功能，直接显示总榜
+      if (!this.showDailyRanking) {
+        container.innerHTML = `
+          <div id="${trackId}-table-container"></div>
+          <div id="${trackId}-pagination" class="pagination-container"></div>
+        `;
+        this.renderTable(`${trackId}-table-container`, trackData.overall, isEn, trackId, 1);
+        return;
+      }
+
+      // ===== 以下是完整的今日榜/总榜切换功能（已暂时禁用） =====
       // 选择初始类型：若今日榜为空，则默认显示总榜
       const initialType = (Array.isArray(trackData.daily) && trackData.daily.length > 0) ? 'daily' : 'overall';
       const dailyActive = initialType === 'daily';
