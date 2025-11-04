@@ -150,7 +150,7 @@
           <div id="${trackId}-table-container"></div>
           <div id="${trackId}-pagination" class="pagination-container"></div>
         `;
-        this.renderTable(`${trackId}-table-container`, trackData.overall, isEn, trackId, 1);
+        this.renderTable(`${trackId}-table-container`, trackData.overall, isEn, trackId, 1, 'overall');
         return;
       }
 
@@ -198,7 +198,7 @@
     /**
      * 渲染表格（带分页）
      */
-    renderTable(containerId, entries, isEn, trackId, currentPage = 1) {
+    renderTable(containerId, entries, isEn, trackId, currentPage = 1, fixedType = null) {
       const container = document.getElementById(containerId);
       if (!container) return;
 
@@ -239,12 +239,18 @@
 
       // 渲染分页
       this.renderPagination(`${trackId}-pagination`, currentPage, totalPages, isEn, () => {
-        // 重新渲染当前类型的数据
-        const activeBtn = container.closest('.card').querySelector('.btn-switch.active');
-        const type = activeBtn ? activeBtn.dataset.type : 'daily';
+        // 如果传入了固定类型（禁用切换按钮时），直接使用
+        let type = fixedType;
+        
+        // 否则，查找当前激活的切换按钮
+        if (!type) {
+          const activeBtn = container.closest('.card').querySelector('.btn-switch.active');
+          type = activeBtn ? activeBtn.dataset.type : 'overall';
+        }
+        
         const trackData = this.cache[trackId];
         const tableData = type === 'daily' ? trackData.daily : trackData.overall;
-        return { trackId, tableData, isEn };
+        return { trackId, tableData, isEn, fixedType };
       });
     },
 
@@ -322,8 +328,8 @@
       container.querySelectorAll('.pagination-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           const page = parseInt(e.target.dataset.page);
-          const { trackId, tableData, isEn } = getDataCallback();
-          this.renderTable(`${trackId}-table-container`, tableData, isEn, trackId, page);
+          const { trackId, tableData, isEn, fixedType } = getDataCallback();
+          this.renderTable(`${trackId}-table-container`, tableData, isEn, trackId, page, fixedType);
         });
       });
     },
