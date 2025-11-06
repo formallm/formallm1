@@ -1,0 +1,10 @@
+{"id": "litex_week1_2136", "nl_problem": "What is the tens digit in the sum $11^1 + 11^2 + 11^3 + \\\\ldots + 11^9$?"}
+{"id": "litex_week1_2093", "nl_problem": "What is the [[volume]] of a [[cube]] whose [[surface area]] is twice that of a cube with volume 1?"}
+{"id": "litex_week1_1138411", "nl_problem": "Consider the function $f(x)=5x+4$.  What is $f(1)$?"}
+{"id": "litex_week1_1138436", "nl_problem": "Determine the remainder of 54 (mod 6)."}
+{"id": "litex_week1_1138404", "nl_problem": "What is the remainder when $2000+2001+2002+2003+2004+2005+2006$ is divided by $7$?"}
+{"id": "litex_week1_2158", "nl_problem": "What is the [[reciprocal]] of $\\\\frac{1}{2}+\\\\frac{2}{3}$?"}
+{"id": "litex_week1_1138370", "nl_problem": "The four-digit number $\\\\underline{374n}$ is divisible by 18. Find the units digit $n$."}
+{"id": "litex_week1_2153", "nl_problem": "Let $f(x) = \\\\begin{cases} -x^2 - 1, & x<0 \\\\\\\\ 2, & 0 \\\\le x< 4 \\\\\\\\ \\\\sqrt{x}, & x \\\\ge 4 \\\\end{cases}$, Find $f(\\\\pi)$."}
+{"id": "litex_week1_2162", "nl_problem": "What is the sum of the four positive factors of the positive integer value of $\\\\sqrt{196}$?"}
+{"id": "litex_week1_2123", "nl_problem": "One dimension of a cube is increased by 1, another is decreased by 1, and the third is left unchanged, the volume of the new rectangular solid is 5 less than that of the cube, what was the volume of the cube?"}
