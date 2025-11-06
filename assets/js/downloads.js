@@ -164,8 +164,39 @@
     return card;
   }
 
+  // 从文件名自动生成显示名称
+  function getDisplayName(item, lang){
+    // 如果已经有 name 且不包含文件扩展名，直接使用
+    if(item.name && !item.name.match(/\.(jsonl|json|zip|py)$/i)){
+      return item.name;
+    }
+    
+    // 否则从 local 路径解析
+    const path = item.local || item.url || '';
+    const filename = path.split('/').pop() || '';
+    const match = filename.match(/^(lean|litex)_(\d{4})\.jsonl$/i);
+    
+    if(match){
+      const track = match[1].charAt(0).toUpperCase() + match[1].slice(1); // Lean 或 Litex
+      const dateStr = match[2]; // 例如 "1107"
+      const month = dateStr.slice(0, 2);
+      const day = dateStr.slice(2);
+      
+      if(lang === 'en'){
+        const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const monthName = monthNames[parseInt(month)-1] || month;
+        return `${monthName} ${day} ${track} Problems`;
+      }else{
+        return `${parseInt(month)}月${parseInt(day)}日 ${track} 赛题`;
+      }
+    }
+    
+    // 兜底：返回原始 name
+    return item.name || filename || 'Unknown';
+  }
+
   function renderInto(mount, data){
-    // 仅保留“今日赛题”
+    // 仅保留"今日赛题"
     const lang = (document.documentElement.getAttribute('lang') || '').toLowerCase().startsWith('en') ? 'en' : 'zh';
     const today = (function(){
       const d = new Date();
@@ -190,7 +221,8 @@
       const ul = el('ul', {class:'disc'});
       for(const item of items){
         const href = (item.local && String(item.local).trim()) ? item.local : item.url;
-        const a = el('a', {href: href || '#', target: href && href.startsWith('http') ? '_blank' : null, rel: href && href.startsWith('http') ? 'noreferrer noopener' : null}, [document.createTextNode(item.name)]);
+        const displayName = getDisplayName(item, lang);
+        const a = el('a', {href: href || '#', target: href && href.startsWith('http') ? '_blank' : null, rel: href && href.startsWith('http') ? 'noreferrer noopener' : null}, [document.createTextNode(displayName)]);
         const li = el('li');
         li.append(a);
         if(item.md5){ li.append(el('span', {class:'text-muted', style:'margin-left:8px'}, [document.createTextNode('MD5: '+item.md5)])); }
