@@ -92,10 +92,10 @@ def fetch_daily_problems(date=None, track="all"):
 
 def save_problems_to_files(problems_data):
     """
-    将赛题数据保存为 JSONL 文件
+    将赛题数据保存为 JSONL 文件（直接复制已有文件）
     
     Args:
-        problems_data: 包含日期和赛题的字典
+        problems_data: 包含日期和赛题的字典，支持从预置文件复制
     
     Returns:
         list: 保存的文件路径列表
@@ -108,8 +108,19 @@ def save_problems_to_files(problems_data):
     os.makedirs(FILES_DIR, exist_ok=True)
     
     # 保存 Lean 赛题
-    if problems_data["lean"]:
+    if problems_data.get("lean_file"):
+        # 如果提供了源文件路径，直接复制
+        source_file = problems_data["lean_file"]
         filename = f"lean_{date_str[4:]}.jsonl"  # lean_1106.jsonl
+        filepath = os.path.join(FILES_DIR, filename)
+        
+        import shutil
+        shutil.copy2(source_file, filepath)
+        print(f"💾 Lean 赛题已复制: {source_file} -> {filename}")
+        saved_files.append(filepath)
+    elif problems_data["lean"]:
+        # API 方式保存
+        filename = f"lean_{date_str[4:]}.jsonl"
         filepath = os.path.join(FILES_DIR, filename)
         
         with open(filepath, 'w', encoding='utf-8') as f:
@@ -120,8 +131,19 @@ def save_problems_to_files(problems_data):
         saved_files.append(filepath)
     
     # 保存 Litex 赛题
-    if problems_data["litex"]:
-        filename = f"litex_{date_str[4:]}.jsonl"  # litex_1106.jsonl
+    if problems_data.get("litex_file"):
+        # 如果提供了源文件路径，直接复制
+        source_file = problems_data["litex_file"]
+        filename = f"litex_{date_str[4:]}.jsonl"
+        filepath = os.path.join(FILES_DIR, filename)
+        
+        import shutil
+        shutil.copy2(source_file, filepath)
+        print(f"💾 Litex 赛题已复制: {source_file} -> {filename}")
+        saved_files.append(filepath)
+    elif problems_data["litex"]:
+        # API 方式保存
+        filename = f"litex_{date_str[4:]}.jsonl"
         filepath = os.path.join(FILES_DIR, filename)
         
         with open(filepath, 'w', encoding='utf-8') as f:

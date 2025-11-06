@@ -23,9 +23,11 @@ ENV/
 logs/
 *.log
 
-# 配置文件（包含敏感信息）
-server/config.sh
+# 配置文件和服务器脚本（包含敏感信息，不公开）
+server/
+**/config.sh
 .env
+**/api_key.txt
 
 # 临时文件
 *.tmp
