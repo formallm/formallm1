@@ -1,23 +1,23 @@
 {
-  "lastUpdated": "2025-11-06T14:30:00+08:00",
+  "lastUpdated": "2025-11-07T14:30:00+08:00",
   "datasets": [
     {
-      "timestamp": "2025-11-06 14:30:00",
-      "title": "11月6日赛题",
+      "timestamp": "2025-11-07 14:30:00",
+      "title": "11月7日赛题",
       "note": "报名后可下载数据",
       "items": [
         {
           "name": "Lean 赛题（Week 1）",
           "md5": "6b7c88248c1b6d5bfa356262d0eb1355",
           "url": "https://www.xir.cn/competitions/1143",
-          "local": "assets/files/lean_1106.jsonl",
+          "local": "assets/files/lean_1107.jsonl",
           "available": true
         },
         {
           "name": "Litex 赛题（Week 1）",
           "md5": "256d6c5d0c576b515597fc02afa7980e",
           "url": "https://www.xir.cn/competitions/1143",
-          "local": "assets/files/litex_1106.jsonl",
+          "local": "assets/files/litex_1107.jsonl",
           "available": true
         }
       ]

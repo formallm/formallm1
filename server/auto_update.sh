@@ -78,36 +78,51 @@ if [ ! -f "$FETCH_SCRIPT" ]; then
     error_exit "找不到数据获取脚本: $FETCH_SCRIPT"
 fi
 
-# 6. 执行数据获取
+# 6. 执行排行榜数据获取
 log "📡 获取排行榜数据..."
 # 可选：通过环境变量 DAILY_DATE 指定日榜日期（YYYY-MM-DD）
 if [ -n "$DAILY_DATE" ]; then
     log "🗓️  指定每日榜日期: $DAILY_DATE"
     if python3 "$FETCH_SCRIPT" "$API_KEY" "$STAGE" "$DAILY_DATE" >> "$LOG_FILE" 2>&1; then
-        log "✅ 数据获取成功"
+        log "✅ 排行榜数据获取成功"
     else
-        error_exit "数据获取失败"
+        log "⚠️  排行榜数据获取失败，继续..."
     fi
 else
     if python3 "$FETCH_SCRIPT" "$API_KEY" "$STAGE" >> "$LOG_FILE" 2>&1; then
-        log "✅ 数据获取成功"
+        log "✅ 排行榜数据获取成功"
     else
-        error_exit "数据获取失败"
+        log "⚠️  排行榜数据获取失败，继续..."
     fi
 fi
 
-# 7. 检查是否有变更
-if git diff --quiet assets/data/leaderboard.json; then
+# 7. 执行赛题数据获取（可选，如果今天有新赛题）
+PROBLEMS_SCRIPT="$REPO_DIR/server/fetch_problems.py"
+if [ -f "$PROBLEMS_SCRIPT" ]; then
+    log "📝 获取今日赛题..."
+    if python3 "$PROBLEMS_SCRIPT" "$API_KEY" >> "$LOG_FILE" 2>&1; then
+        log "✅ 赛题数据获取成功"
+    else
+        log "ℹ️  今日无新赛题或获取失败"
+    fi
+else
+    log "ℹ️  未找到赛题获取脚本，跳过"
+fi
+
+# 8. 检查是否有变更
+git add -A assets/data/ assets/files/*.jsonl 2>/dev/null || true
+
+if git diff --staged --quiet; then
     log "ℹ️  数据无变化，无需更新"
     log "=========================================="
     exit 0
 fi
 
-# 8. 提交变更
+# 9. 提交变更
 log "📝 提交变更..."
-git add assets/data/leaderboard.json
+# 文件已在上一步添加到暂存区
 
-COMMIT_MSG="chore: update leaderboard data - $(date '+%Y-%m-%d %H:%M:%S')"
+COMMIT_MSG="chore: update leaderboard and problems - $(date '+%Y-%m-%d %H:%M:%S')"
 git commit -m "$COMMIT_MSG" || error_exit "提交失败"
 log "✅ 提交成功: $COMMIT_MSG"
 
@@ -125,4 +140,5 @@ log "✅ 排行榜更新完成"
 log "=========================================="
 
 exit 0
+
 
