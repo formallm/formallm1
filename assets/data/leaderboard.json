@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-11-07T12:00:05.373731+08:00",
+  "lastUpdated": "2025-11-07T13:00:06.801168+08:00",
   "stage": "preliminary",
   "litex": {
     "daily": [
@@ -161,6 +161,24 @@
         "members": "",
         "submitTime": "",
         "submissionCount": 0
+      },
+      {
+        "rank": 2,
+        "teamName": "XiRer_6ac01f",
+        "teamId": "358724",
+        "score": 7.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 3,
+        "teamName": "猴嗨森",
+        "teamId": "359562",
+        "score": 1.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
       }
     ],
     "overall": [
@@ -247,6 +265,15 @@
       },
       {
         "rank": 10,
+        "teamName": "XiRer_6ac01f",
+        "teamId": "358724",
+        "score": 7.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 11,
         "teamName": "3CMEP",
         "teamId": "358802",
         "score": 6.0,
@@ -255,7 +282,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 11,
+        "rank": 12,
         "teamName": "AI4Math-SG",
         "teamId": "360946",
         "score": 6.0,
@@ -264,7 +291,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 12,
+        "rank": 13,
         "teamName": "CCD",
         "teamId": "358769",
         "score": 5.0,
@@ -273,7 +300,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 13,
+        "rank": 14,
         "teamName": "解在何方",
         "teamId": "360806",
         "score": 5.0,
@@ -282,7 +309,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 14,
+        "rank": 15,
         "teamName": "拒做韭菜",
         "teamId": "359876",
         "score": 5.0,
@@ -291,7 +318,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 15,
+        "rank": 16,
         "teamName": "prompt对对队",
         "teamId": "359087",
         "score": 4.0,
@@ -300,7 +327,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 16,
+        "rank": 17,
         "teamName": "钱来",
         "teamId": "358911",
         "score": 4.0,
@@ -309,7 +336,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 17,
+        "rank": 18,
         "teamName": "Henry of Scarlets",
         "teamId": "359210",
         "score": 4.0,
@@ -318,7 +345,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 18,
+        "rank": 19,
         "teamName": "他不是zcd",
         "teamId": "357796",
         "score": 4.0,
@@ -327,7 +354,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 19,
+        "rank": 20,
         "teamName": "scut_tucs",
         "teamId": "357505",
         "score": 3.0,
@@ -336,7 +363,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 20,
+        "rank": 21,
         "teamName": "XiRer_005813",
         "teamId": "359084",
         "score": 2.0,
@@ -345,7 +372,16 @@
         "submissionCount": 0
       },
       {
-        "rank": 21,
+        "rank": 22,
+        "teamName": "猴嗨森",
+        "teamId": "359562",
+        "score": 1.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 23,
         "teamName": "跟我的提示词说去吧",
         "teamId": "357606",
         "score": 0.0,
@@ -354,7 +390,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 22,
+        "rank": 24,
         "teamName": "HaHa_aHaH",
         "teamId": "360468",
         "score": 0.0,
@@ -363,7 +399,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 23,
+        "rank": 25,
         "teamName": "XiRer_03d035",
         "teamId": "360872",
         "score": 0.0,
@@ -372,7 +408,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 24,
+        "rank": 26,
         "teamName": "不知道叫什么队",
         "teamId": "357742",
         "score": 0.0,
@@ -381,7 +417,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 25,
+        "rank": 27,
         "teamName": "混子对不队",
         "teamId": "359791",
         "score": 0.0,
