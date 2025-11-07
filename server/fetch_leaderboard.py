@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 排行榜数据获取脚本
-从 FormaLLM 竞赛 API 获取排行榜数据并保存为 JSON
+从 ForMaLLM 竞赛 API 获取排行榜数据并保存为 JSON
 """
 
 import requests
@@ -107,12 +107,13 @@ def fetch_latest_daily_ranking(stage: str, preferred_date: str | None = None, lo
     return data
 
 
-def fetch_overall_ranking(stage=STAGE):
+def fetch_overall_ranking(stage=STAGE, date=None):
     """
     获取总排行榜
     
     Args:
         stage: 比赛阶段
+        date: 日期 (YYYY-MM-DD 格式)，如果指定则获取截止到该日期的累计排名
     
     Returns:
         dict: API 响应数据
@@ -121,7 +122,12 @@ def fetch_overall_ranking(stage=STAGE):
     headers = {"X-API-Key": API_KEY}
     params = {"stage": stage}
     
-    print(f"📡 获取总排行榜 (阶段: {stage})...")
+    # 如果指定了日期，尝试添加到参数中（API 可能支持 dt 参数）
+    if date:
+        params["dt"] = date
+        print(f"📡 获取总排行榜 (阶段: {stage}, 截止日期: {date})...")
+    else:
+        print(f"📡 获取总排行榜 (阶段: {stage})...")
     
     try:
         response = requests.get(url, headers=headers, params=params, timeout=30)
@@ -246,7 +252,7 @@ def save_json(data, filepath):
 def main():
     """主函数"""
     print("=" * 60)
-    print("🏆 FormaLLM 竞赛排行榜数据获取")
+    print("🏆 ForMaLLM 竞赛排行榜数据获取")
     print("=" * 60)
     print()
     
@@ -258,7 +264,7 @@ def main():
     
     if len(sys.argv) > 2:
         _ignored_stage = sys.argv[2]
-        print(f"📋 忽略传入阶段参数，固定：每日=preliminary，总榜=practice")
+        print(f"📋 忽略传入阶段参数，固定：每日=preliminary，总榜=preliminary")
     
     daily_date_override = sys.argv[3] if len(sys.argv) > 3 else None
     
@@ -266,11 +272,12 @@ def main():
     
     # 1. 获取每日排行榜（每日榜固定使用 preliminary；找最近有数据的日期）
     daily_stage = "preliminary"
-    daily_data = fetch_latest_daily_ranking(daily_stage, preferred_date=daily_date_override, lookback_days=7)
+    #daily_data = fetch_latest_daily_ranking(daily_stage, preferred_date=daily_date_override, lookback_days=7)
+    daily_data = fetch_latest_daily_ranking(daily_stage, preferred_date="2025-11-06", lookback_days=7)
     
-    # 2. 获取总排行榜（总榜固定使用 practice）
-    overall_stage = "practice"
-    overall_data = fetch_overall_ranking(overall_stage)
+    # 2. 获取总排行榜（总榜固定使用 preliminary，截止到 11-06）
+    overall_stage = "preliminary"
+    overall_data = fetch_overall_ranking(overall_stage, date="2025-11-06")
     
     # 3. 检查是否至少有一个成功
     if not daily_data and not overall_data:
