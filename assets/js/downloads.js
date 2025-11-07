@@ -200,6 +200,10 @@
     const lang = (document.documentElement.getAttribute('lang') || '').toLowerCase().startsWith('en') ? 'en' : 'zh';
     const today = (function(){
       const d = new Date();
+      // 如果当前时间已经过了23:00，则显示明天的日期
+      if(d.getHours() >= 23){
+        d.setDate(d.getDate() + 1);
+      }
       const y = d.getFullYear();
       const m = String(d.getMonth()+1).padStart(2,'0');
       const dd = String(d.getDate()).padStart(2,'0');
