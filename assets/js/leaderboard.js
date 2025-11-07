@@ -13,7 +13,7 @@
   const LeaderboardAPI = {
     // ========== 配置区 ==========
     // 是否显示"今日榜"功能（设为 false 暂时隐藏，设为 true 重新显示）
-    showDailyRanking: false,
+    showDailyRanking: true,
     // ===========================
     
     // 数据源 URL（可配置为云端接口）
@@ -141,25 +141,102 @@
     },
 
     /**
+     * 格式化更新时间
+     */
+    formatUpdateTime(timestamp, isEn) {
+      if (!timestamp) return '';
+      try {
+        const date = new Date(timestamp);
+        if (isEn) {
+          return date.toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          });
+        } else {
+          return date.toLocaleString('zh-CN', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          });
+        }
+      } catch (e) {
+        return timestamp;
+      }
+    },
+
+    /**
+     * 获取日榜对应的日期
+     * 说明：脚本在每天23:00更新，所以11点前显示的是前一天的日榜
+     */
+    getDailyRankingDate(isEn) {
+      const now = new Date();
+      const hour = now.getHours();
+      
+      // 如果当前时间在23:00之前，日榜显示的是前一天的数据
+      const rankingDate = hour < 23 
+        ? new Date(now.getTime() - 24 * 60 * 60 * 1000) // 前一天
+        : now; // 今天
+      
+      if (isEn) {
+        return rankingDate.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        });
+      } else {
+        const month = rankingDate.getMonth() + 1;
+        const day = rankingDate.getDate();
+        return `${month}月${day}日`;
+      }
+    },
+
+    /**
      * 渲染单个赛道（包含切换功能）
      */
     renderTrack(container, trackId, trackData, isEn) {
       // 如果禁用今日榜功能，直接显示总榜
       if (!this.showDailyRanking) {
+        const updateTimeText = this.cache?.lastUpdated 
+          ? `<p class="text-muted text-center" style="font-size:13px;margin-top:12px;">${isEn ? 'Last updated: ' : '最后更新：'}${this.formatUpdateTime(this.cache.lastUpdated, isEn)}</p>`
+          : '';
         container.innerHTML = `
           <div id="${trackId}-table-container"></div>
           <div id="${trackId}-pagination" class="pagination-container"></div>
+          ${updateTimeText}
         `;
         this.renderTable(`${trackId}-table-container`, trackData.overall, isEn, trackId, 1, 'overall');
         return;
       }
 
-      // ===== 以下是完整的今日榜/总榜切换功能（已暂时禁用） =====
+      // ===== 以下是完整的今日榜/总榜切换功能 =====
       // 选择初始类型：若今日榜为空，则默认显示总榜
       const initialType = (Array.isArray(trackData.daily) && trackData.daily.length > 0) ? 'daily' : 'overall';
       const dailyActive = initialType === 'daily';
 
+      // 获取日榜对应的日期
+      const dailyDate = this.getDailyRankingDate(isEn);
+      
       // 创建切换按钮（根据初始类型设置 active）
+      const updateTimeText = this.cache?.lastUpdated 
+        ? `<p class="text-muted text-center" style="font-size:13px;margin-top:12px;" id="${trackId}-update-time">
+             ${isEn ? 'Last updated: ' : '最后更新：'}${this.formatUpdateTime(this.cache.lastUpdated, isEn)}
+           </p>`
+        : '';
+      
+      const dailyDateHint = `<p class="text-muted text-center" style="font-size:12px;margin-top:8px;" id="${trackId}-daily-hint">
+        ${isEn 
+          ? `<span style="opacity:0.7;">Daily ranking date: <strong>${dailyDate}</strong></span> <span style="opacity:0.5;">• Updates at 23:00 daily</span>`
+          : `<span style="opacity:0.7;">日榜日期：<strong>${dailyDate}</strong></span> <span style="opacity:0.5;">• 每日23:00更新</span>`
+        }
+      </p>`;
+      
       const switchHTML = `
         <div class="leaderboard-switch" style="text-align:center;margin-bottom:16px;">
           <button class="btn-switch ${dailyActive ? 'active' : ''}" data-track="${trackId}" data-type="daily">
@@ -169,8 +246,10 @@
             ${isEn ? 'Overall' : '总榜'}
           </button>
         </div>
+        <div id="${trackId}-daily-date-hint">${dailyDateHint}</div>
         <div id="${trackId}-table-container"></div>
         <div id="${trackId}-pagination" class="pagination-container"></div>
+        ${updateTimeText}
       `;
 
       container.innerHTML = switchHTML;
@@ -181,6 +260,8 @@
 
       // 绑定切换事件
       const buttons = container.querySelectorAll('.btn-switch');
+      const dateHintContainer = container.querySelector(`#${trackId}-daily-date-hint`);
+      
       buttons.forEach(btn => {
         btn.addEventListener('click', (e) => {
           // 更新按钮状态
@@ -191,8 +272,18 @@
           const type = e.target.dataset.type;
           const tableData = type === 'daily' ? trackData.daily : trackData.overall;
           this.renderTable(`${trackId}-table-container`, tableData, isEn, trackId, 1);
+          
+          // 根据榜单类型显示/隐藏日期提示
+          if (dateHintContainer) {
+            dateHintContainer.style.display = type === 'daily' ? 'block' : 'none';
+          }
         });
       });
+      
+      // 初始化时根据榜单类型显示/隐藏日期提示
+      if (dateHintContainer) {
+        dateHintContainer.style.display = initialType === 'daily' ? 'block' : 'none';
+      }
     },
 
     /**
