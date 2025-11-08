@@ -253,29 +253,37 @@ echo
 echo "⏰ 步骤 7/7: 配置定时任务"
 echo "----------------------------------------"
 echo "请选择更新频率:"
-echo "  1) 每天 2:00 和 14:00（推荐）"
-echo "  2) 每小时"
-echo "  3) 每 30 分钟"
-echo "  4) 每天 3:00"
+echo "  1) 每天 23:00（推荐 - 生产环境）"
+echo "  2) 每天 2:00 和 14:00"
+echo "  3) 每 6 小时"
+echo "  4) 每小时（⚠️  仅测试用，会频繁提交）"
 echo "  5) 自定义"
 read -p "选择 (1-5): " freq_choice
 
 case $freq_choice in
     1)
+        CRON_SCHEDULE="0 23 * * *"
+        DESCRIPTION="每天 23:00"
+        ;;
+    2)
         CRON_SCHEDULE="0 2,14 * * *"
         DESCRIPTION="每天 2:00 和 14:00"
         ;;
-    2)
-        CRON_SCHEDULE="0 * * * *"
-        DESCRIPTION="每小时"
-        ;;
     3)
-        CRON_SCHEDULE="*/30 * * * *"
-        DESCRIPTION="每 30 分钟"
+        CRON_SCHEDULE="0 */6 * * *"
+        DESCRIPTION="每 6 小时"
         ;;
     4)
-        CRON_SCHEDULE="0 3 * * *"
-        DESCRIPTION="每天 3:00"
+        echo ""
+        print_warning "每小时更新会导致频繁提交到 GitHub（每天24次提交）"
+        print_warning "建议：生产环境使用选项1（每天 23:00）"
+        read -p "确认使用每小时更新？(yes/no): " confirm
+        if [ "$confirm" != "yes" ]; then
+            print_error "已取消，请重新运行脚本"
+            exit 1
+        fi
+        CRON_SCHEDULE="0 * * * *"
+        DESCRIPTION="每小时（测试模式）"
         ;;
     5)
         read -p "输入 Cron 表达式 (如 0 */2 * * *): " CRON_SCHEDULE
@@ -283,8 +291,8 @@ case $freq_choice in
         ;;
     *)
         print_error "无效选择，使用默认配置"
-        CRON_SCHEDULE="0 2,14 * * *"
-        DESCRIPTION="每天 2:00 和 14:00"
+        CRON_SCHEDULE="0 23 * * *"
+        DESCRIPTION="每天 23:00"
         ;;
 esac
 

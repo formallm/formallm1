@@ -112,29 +112,37 @@ echo "当前工作目录: $(pwd)"
 SCRIPT_PATH="$(pwd)/server/auto_update.sh"
 
 echo "请选择更新频率:"
-echo "  1) 每小时"
-echo "  2) 每 6 小时"
-echo "  3) 每天 8:00"
-echo "  4) 每天 8:00 和 20:00"
+echo "  1) 每天 23:00（推荐 - 生产环境）"
+echo "  2) 每天 8:00 和 20:00"
+echo "  3) 每 6 小时"
+echo "  4) 每小时（⚠️  仅测试用，会频繁提交）"
 echo "  5) 自定义"
 read -r choice
 
 case $choice in
     1)
-        CRON_SCHEDULE="0 * * * *"
-        DESCRIPTION="每小时"
+        CRON_SCHEDULE="0 23 * * *"
+        DESCRIPTION="每天 23:00"
         ;;
     2)
+        CRON_SCHEDULE="0 8,20 * * *"
+        DESCRIPTION="每天 8:00 和 20:00"
+        ;;
+    3)
         CRON_SCHEDULE="0 */6 * * *"
         DESCRIPTION="每 6 小时"
         ;;
-    3)
-        CRON_SCHEDULE="0 8 * * *"
-        DESCRIPTION="每天 8:00"
-        ;;
     4)
-        CRON_SCHEDULE="0 8,20 * * *"
-        DESCRIPTION="每天 8:00 和 20:00"
+        echo ""
+        echo "⚠️  警告：每小时更新会导致频繁提交到 GitHub（每天24次提交）"
+        echo "建议：生产环境使用选项1（每天 23:00）"
+        read -p "确认使用每小时更新？(yes/no): " confirm
+        if [ "$confirm" != "yes" ]; then
+            echo "❌ 已取消，请重新运行脚本"
+            exit 1
+        fi
+        CRON_SCHEDULE="0 * * * *"
+        DESCRIPTION="每小时（测试模式）"
         ;;
     5)
         echo "请输入 Cron 表达式 (例如: 0 */2 * * *):"

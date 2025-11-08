@@ -272,12 +272,15 @@ def main():
     
     # 1. 获取每日排行榜（每日榜固定使用 preliminary；找最近有数据的日期）
     daily_stage = "preliminary"
-    #daily_data = fetch_latest_daily_ranking(daily_stage, preferred_date=daily_date_override, lookback_days=7)
-    daily_data = fetch_latest_daily_ranking(daily_stage, preferred_date="2025-11-06", lookback_days=7)
+    # 使用北京时区的当前日期（如果需要固定日期，可以传入 daily_date_override）
+    tz_beijing = timezone(timedelta(hours=8))
+    today = datetime.now(tz_beijing).strftime('%Y-%m-%d')
+    preferred_date = daily_date_override if daily_date_override else today
+    daily_data = fetch_latest_daily_ranking(daily_stage, preferred_date=preferred_date, lookback_days=7)
     
-    # 2. 获取总排行榜（总榜固定使用 preliminary，截止到 11-06）
+    # 2. 获取总排行榜（总榜固定使用 preliminary，不指定日期获取最新数据）
     overall_stage = "preliminary"
-    overall_data = fetch_overall_ranking(overall_stage, date="2025-11-06")
+    overall_data = fetch_overall_ranking(overall_stage, date=None)
     
     # 3. 检查是否至少有一个成功
     if not daily_data and not overall_data:

@@ -199,14 +199,19 @@
     // 仅保留"今日赛题"
     const lang = (document.documentElement.getAttribute('lang') || '').toLowerCase().startsWith('en') ? 'en' : 'zh';
     const today = (function(){
-      const d = new Date();
-      // 如果当前时间已经过了23:00，则显示明天的日期
-      if(d.getHours() >= 23){
-        d.setDate(d.getDate() + 1);
+      // 使用 UTC+8 时区（北京时间）
+      const now = new Date();
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const bjTime = new Date(utc + (3600000 * 8));
+      
+      // 如果北京时间已经过了23:00，则显示明天的日期
+      if(bjTime.getHours() >= 23){
+        bjTime.setDate(bjTime.getDate() + 1);
       }
-      const y = d.getFullYear();
-      const m = String(d.getMonth()+1).padStart(2,'0');
-      const dd = String(d.getDate()).padStart(2,'0');
+      
+      const y = bjTime.getFullYear();
+      const m = String(bjTime.getMonth()+1).padStart(2,'0');
+      const dd = String(bjTime.getDate()).padStart(2,'0');
       return y+'-'+m+'-'+dd;
     })();
     const highlightP = document.querySelector('#downloads .card.highlight p');

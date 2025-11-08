@@ -173,16 +173,19 @@
 
     /**
      * 获取日榜对应的日期
-     * 说明：脚本在每天23:00更新，所以11点前显示的是前一天的日榜
+     * 说明：脚本在每天23:00（北京时间）更新，所以23点前显示的是前一天的日榜
      */
     getDailyRankingDate(isEn) {
+      // 使用 UTC+8 时区（北京时间）
       const now = new Date();
-      const hour = now.getHours();
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const bjTime = new Date(utc + (3600000 * 8));
+      const hour = bjTime.getHours();
       
-      // 如果当前时间在23:00之前，日榜显示的是前一天的数据
+      // 如果北京时间在23:00之前，日榜显示的是前一天的数据
       const rankingDate = hour < 23 
-        ? new Date(now.getTime() - 24 * 60 * 60 * 1000) // 前一天
-        : now; // 今天
+        ? new Date(bjTime.getTime() - 24 * 60 * 60 * 1000) // 前一天
+        : bjTime; // 今天
       
       if (isEn) {
         return rankingDate.toLocaleDateString('en-US', {
@@ -232,8 +235,8 @@
       
       const dailyDateHint = `<p class="text-muted text-center" style="font-size:12px;margin-top:8px;" id="${trackId}-daily-hint">
         ${isEn 
-          ? `<span style="opacity:0.7;">Daily ranking date: <strong>${dailyDate}</strong></span> <span style="opacity:0.5;">• Updates at 23:00 daily</span>`
-          : `<span style="opacity:0.7;">日榜日期：<strong>${dailyDate}</strong></span> <span style="opacity:0.5;">• 每日23:00更新</span>`
+          ? `<span style="opacity:0.7;">Daily ranking date: <strong>${dailyDate}</strong></span> <span style="opacity:0.5;">• Updates at 23:00 Beijing Time daily</span>`
+          : `<span style="opacity:0.7;">日榜日期：<strong>${dailyDate}</strong></span> <span style="opacity:0.5;">• 每日23:00（北京时间）更新</span>`
         }
       </p>`;
       
