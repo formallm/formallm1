@@ -9,6 +9,7 @@ import json
 import os
 import sys
 from datetime import datetime, timezone, timedelta
+import pytz
 
 # API 配置
 API_BASE_URL = os.getenv("FORMALLM_API_BASE", "http://121.43.230.124")
@@ -177,7 +178,16 @@ def update_downloads_json(problems_data, saved_files):
     # 准备新的赛题条目
     date = problems_data["date"]
     date_obj = datetime.strptime(date, '%Y-%m-%d')
-    timestamp = date_obj.strftime('%Y-%m-%d %H:%M:%S')
+    
+    # 如果当前时间在北京时间23:00之后，timestamp 写入明天的日期
+    # 这样前端在23:00后就能匹配到"明天"的赛题
+    now_bj = datetime.now(pytz.timezone('Asia/Shanghai'))
+    if now_bj.hour >= 23:
+        # 时间戳使用明天的日期
+        display_date = date_obj + timedelta(days=1)
+        timestamp = display_date.strftime('%Y-%m-%d %H:%M:%S')
+    else:
+        timestamp = date_obj.strftime('%Y-%m-%d %H:%M:%S')
     
     items = []
     for filepath in saved_files:

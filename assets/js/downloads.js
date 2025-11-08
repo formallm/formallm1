@@ -1,5 +1,5 @@
 (function(){
-  const DATA_URL = 'assets/data/downloads.json';
+  const DATA_URL = '../assets/data/downloads.json';
   const CACHE_KEY = 'downloads_cache_v1';
   const CACHE_AT = 'downloads_cache_at_v1';
   const ONE_DAY = 24*3600*1000;
@@ -18,6 +18,20 @@
     const node = document.getElementById('downloads-data');
     if(!node) return null;
     try{ return JSON.parse(node.textContent || '{}'); }catch(e){ console.error('inline json parse error', e); return null; }
+  }
+
+  // 规范化资源链接，兼容 GitHub Pages 子目录（如 /repo/en/）
+  function normalizeHref(href){
+    if(!href) return href;
+    if(/^https?:\/\//i.test(href)) return href;
+    if(href.startsWith('/')) return href;
+    if(href.startsWith('../')) return href;
+    if(href.startsWith('assets/')){
+      const parts = (window.location.pathname || '').split('/').filter(Boolean);
+      const base = parts.length > 0 ? ('/' + parts[0] + '/') : '/';
+      return base + href;
+    }
+    return href;
   }
 
   async function fetchData(force=false){
@@ -198,8 +212,9 @@
   function renderInto(mount, data){
     // 仅保留"今日赛题"
     const lang = (document.documentElement.getAttribute('lang') || '').toLowerCase().startsWith('en') ? 'en' : 'zh';
-    const today = (function(){
-      // 使用 UTC+8 时区（北京时间）
+    
+    // 计算"期望显示的日期"：23:00前显示当天，23:00后显示明天
+    const expectedDate = (function(){
       const now = new Date();
       const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
       const bjTime = new Date(utc + (3600000 * 8));
@@ -214,12 +229,20 @@
       const dd = String(bjTime.getDate()).padStart(2,'0');
       return y+'-'+m+'-'+dd;
     })();
+    
     const highlightP = document.querySelector('#downloads .card.highlight p');
 
-    const firstBlock = (data && Array.isArray(data.datasets) && data.datasets.length) ? data.datasets[0] : null;
-    const ts = firstBlock && typeof firstBlock.timestamp === 'string' ? firstBlock.timestamp.slice(0,10) : null;
-    const items = firstBlock && Array.isArray(firstBlock.items) ? firstBlock.items : [];
-    const hasToday = (ts === today) && items.length > 0;
+    // 查找匹配期望日期的赛题块
+    let targetBlock = null;
+    if(data && Array.isArray(data.datasets)){
+      targetBlock = data.datasets.find(block => {
+        const ts = block.timestamp ? String(block.timestamp).slice(0,10) : null;
+        return ts === expectedDate;
+      });
+    }
+    
+    const items = targetBlock && Array.isArray(targetBlock.items) ? targetBlock.items : [];
+    const hasToday = targetBlock && items.length > 0;
 
     if(hasToday){
       if(highlightP){
@@ -229,7 +252,8 @@
       card.append(el('h3', {}, [document.createTextNode(lang==='en' ? "Today's Challenge" : '今日赛题')]));
       const ul = el('ul', {class:'disc'});
       for(const item of items){
-        const href = (item.local && String(item.local).trim()) ? item.local : item.url;
+        const rawHref = (item.local && String(item.local).trim()) ? item.local : item.url;
+        const href = normalizeHref(rawHref);
         const displayName = getDisplayName(item, lang);
         const a = el('a', {href: href || '#', target: href && href.startsWith('http') ? '_blank' : null, rel: href && href.startsWith('http') ? 'noreferrer noopener' : null}, [document.createTextNode(displayName)]);
         const li = el('li');
