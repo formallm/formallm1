@@ -1,6 +1,25 @@
 {
-  "lastUpdated": "2025-11-08T14:30:00+08:00",
+  "lastUpdated": "2025-11-08T23:08:54.036262",
   "datasets": [
+    {
+      "timestamp": "2025-11-09 23:08:54",
+      "title": "11月09日赛题",
+      "note": "报名后可下载数据",
+      "items": [
+        {
+          "md5": "a21be928caac66b858268673f954d049",
+          "url": "https://www.xir.cn/competitions/1143",
+          "local": "assets/files/lean_1109.jsonl",
+          "available": true
+        },
+        {
+          "md5": "d7a891012275a262bc168d284b50e63f",
+          "url": "https://www.xir.cn/competitions/1143",
+          "local": "assets/files/litex_1109.jsonl",
+          "available": true
+        }
+      ]
+    },
     {
       "timestamp": "2025-11-08 14:30:00",
       "title": "11月8日赛题",
@@ -87,8 +106,14 @@
     }
   ],
   "docs": [
-    { "name": "Litex 官网", "url": "https://litexlang.com/" },
-    { "name": "Lean 官网", "url": "https://lean-lang.org/" }
+    {
+      "name": "Litex 官网",
+      "url": "https://litexlang.com/"
+    },
+    {
+      "name": "Lean 官网",
+      "url": "https://lean-lang.org/"
+    }
   ],
   "notices": [
     {
@@ -115,14 +140,31 @@
       "提交结果为 JSONL，需包含 id 与 nl_problem 等字段。"
     ],
     "fields": [
-      { "name": "id", "desc": "给定的题目编号。" },
-      { "name": "nl_problem", "desc": "给定的原始自然语言题目。" },
-      { "name": "formal_type", "desc": "形式化语言类型。可选 Lean 或 Litex。" },
-      { "name": "header", "desc": "环境代码/引理等（Lean: import/open/lemma；Litex: import/know/prop/fn）。" },
-      { "name": "formal_statement", "desc": "形式化题干（Lean: theorem 至 :=；Litex: claim 至 prove）。" },
-      { "name": "formal_code", "desc": "完整代码：无转义问题；核心逻辑有注释；不得作弊。" }
+      {
+        "name": "id",
+        "desc": "给定的题目编号。"
+      },
+      {
+        "name": "nl_problem",
+        "desc": "给定的原始自然语言题目。"
+      },
+      {
+        "name": "formal_type",
+        "desc": "形式化语言类型。可选 Lean 或 Litex。"
+      },
+      {
+        "name": "header",
+        "desc": "环境代码/引理等（Lean: import/open/lemma；Litex: import/know/prop/fn）。"
+      },
+      {
+        "name": "formal_statement",
+        "desc": "形式化题干（Lean: theorem 至 :=；Litex: claim 至 prove）。"
+      },
+      {
+        "name": "formal_code",
+        "desc": "完整代码：无转义问题；核心逻辑有注释；不得作弊。"
+      }
     ]
   },
   "fairplay": "参赛团队需共同维护竞赛环境的公平公正，禁止利用规则或技术漏洞抬高成绩，禁止抄袭/交换答案/小号。一经发现取消成绩并严肃处理。平台基于自动化反作弊+人工审核，赛中动态反违规、反作弊。若收到封禁通知，可在指定页面申诉。"
 }
-
