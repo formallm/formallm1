@@ -248,6 +248,69 @@ def update_downloads_json(problems_data, saved_files):
         json.dump(config, f, ensure_ascii=False, indent=2)
     
     print(f"✅ downloads.json 已更新")
+    
+    return config  # 返回更新后的配置，用于更新 HTML
+
+
+def update_html_embedded_json(config):
+    """
+    更新 HTML 文件中的内嵌 JSON 数据
+    
+    Args:
+        config: 更新后的 downloads.json 配置数据
+    """
+    import re
+    
+    html_files = [
+        os.path.join(PROJECT_ROOT, "cn", "downloads.html"),
+        os.path.join(PROJECT_ROOT, "en", "downloads.html")
+    ]
+    
+    # 准备 JSON 字符串（格式化，2 空格缩进）
+    json_str = json.dumps(config, ensure_ascii=False, indent=2)
+    
+    for html_path in html_files:
+        if not os.path.exists(html_path):
+            print(f"⚠️  HTML 文件不存在: {html_path}")
+            continue
+        
+        try:
+            # 读取 HTML 文件
+            with open(html_path, 'r', encoding='utf-8') as f:
+                html_content = f.read()
+            
+            # 使用正则表达式匹配 <script id="downloads-data"> 标签内的 JSON
+            # 匹配模式：从 <script id="downloads-data" 开始，到 </script> 结束（支持多行）
+            pattern = r'(<script\s+id=["\']downloads-data["\'][^>]*>)\s*(\{[\s\S]*?\})\s*(</script>)'
+            
+            def replace_json(match):
+                script_open = match.group(1)
+                script_close = match.group(3)
+                # 返回新的 script 标签，包含更新后的 JSON（保持原有缩进）
+                # 查找 script 标签前的缩进
+                match_start = match.start()
+                lines = html_content[:match_start].split('\n')
+                if lines:
+                    indent = len(lines[-1]) - len(lines[-1].lstrip())
+                    indent_str = ' ' * indent
+                else:
+                    indent_str = '          '  # 默认 10 个空格
+                return f"{script_open}\n{json_str}\n{indent_str}{script_close}"
+            
+            # 替换 JSON 内容
+            new_html = re.sub(pattern, replace_json, html_content, flags=re.DOTALL)
+            
+            # 如果替换成功（内容有变化）
+            if new_html != html_content:
+                # 写回文件
+                with open(html_path, 'w', encoding='utf-8') as f:
+                    f.write(new_html)
+                print(f"✅ HTML 内嵌数据已更新: {os.path.basename(html_path)}")
+            else:
+                print(f"⚠️  HTML 文件未找到匹配的 JSON 块: {os.path.basename(html_path)}")
+                
+        except Exception as e:
+            print(f"❌ 更新 HTML 文件失败 {os.path.basename(html_path)}: {e}")
 
 
 def main():
@@ -286,7 +349,12 @@ def main():
     
     # 3. 更新 downloads.json
     print()
-    update_downloads_json(problems_data, saved_files)
+    config = update_downloads_json(problems_data, saved_files)
+    
+    # 4. 更新 HTML 文件中的内嵌 JSON
+    if config:
+        print()
+        update_html_embedded_json(config)
     
     print()
     print("=" * 60)
