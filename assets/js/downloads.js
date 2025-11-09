@@ -269,7 +269,7 @@
 
     // 查找匹配期望日期的赛题块
     let targetBlock = null;
-    if(data && Array.isArray(data.datasets)){
+    if(data && Array.isArray(data.datasets) && data.datasets.length > 0){
       // 调试信息（仅在开发环境）
       if(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'){
         console.log('期望日期:', expectedDate);
@@ -280,6 +280,7 @@
         })));
       }
       
+      // 首先尝试匹配今天的日期
       targetBlock = data.datasets.find(block => {
         if(!block.timestamp) return false;
         const ts = String(block.timestamp);
@@ -287,6 +288,13 @@
         const datePart = ts.slice(0,10);
         return datePart === expectedDate;
       });
+      
+      // 如果匹配不到今天的，就显示最新的数据块（第一个，因为数据是按时间倒序排列的）
+      if(!targetBlock || !targetBlock.items || targetBlock.items.length === 0){
+        targetBlock = data.datasets.find(block => {
+          return block && block.items && Array.isArray(block.items) && block.items.length > 0;
+        });
+      }
     }
     
     const items = targetBlock && Array.isArray(targetBlock.items) ? targetBlock.items : [];
@@ -294,7 +302,13 @@
 
     if(hasToday){
       if(highlightP){
-        highlightP.textContent = lang==='en' ? "Today's challenge is published. See files below." : '今日赛题已发布，请查看下方文件。';
+        // 如果显示的不是今天的，提示用户这是最新的可用赛题
+        const isToday = targetBlock && targetBlock.timestamp && String(targetBlock.timestamp).slice(0,10) === expectedDate;
+        if(isToday){
+          highlightP.textContent = lang==='en' ? "Today's challenge is published. See files below." : '今日赛题已发布，请查看下方文件。';
+        }else{
+          highlightP.textContent = lang==='en' ? "Latest available challenge. See files below." : '最新可用赛题，请查看下方文件。';
+        }
       }
       const card = el('div', {class:'card'});
       card.append(el('h3', {}, [document.createTextNode(lang==='en' ? "Today's Challenge" : '今日赛题')]));
