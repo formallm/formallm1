@@ -252,17 +252,13 @@
     // 仅保留"今日赛题"
     const lang = (document.documentElement.getAttribute('lang') || '').toLowerCase().startsWith('en') ? 'en' : 'zh';
     
-    // 计算"期望显示的日期"：23:00前显示当天，23:00后显示明天
+    // 计算"期望显示的日期"：始终显示今天的日期（数据在23:00更新，但更新的是今天的赛题）
     const expectedDate = (function(){
       const now = new Date();
       const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
       const bjTime = new Date(utc + (3600000 * 8));
       
-      // 如果北京时间已经过了23:00，则显示明天的日期
-      if(bjTime.getHours() >= 23){
-        bjTime.setDate(bjTime.getDate() + 1);
-      }
-      
+      // 始终使用今天的日期（数据在23:00更新，但更新的是今天的赛题）
       const y = bjTime.getFullYear();
       const m = String(bjTime.getMonth()+1).padStart(2,'0');
       const dd = String(bjTime.getDate()).padStart(2,'0');
