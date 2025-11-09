@@ -51,6 +51,21 @@
     return href;
   }
 
+  // 比较两个数据集的lastUpdated时间，返回较新的那个
+  function getNewerData(data1, data2){
+    if(!data1) return data2;
+    if(!data2) return data1;
+    const t1 = data1.lastUpdated ? new Date(data1.lastUpdated).getTime() : 0;
+    const t2 = data2.lastUpdated ? new Date(data2.lastUpdated).getTime() : 0;
+    // 如果时间相同，比较第一个数据集的timestamp
+    if(t1 === t2 && data1.datasets && data2.datasets && data1.datasets.length > 0 && data2.datasets.length > 0){
+      const ts1 = data1.datasets[0].timestamp ? String(data1.datasets[0].timestamp) : '';
+      const ts2 = data2.datasets[0].timestamp ? String(data2.datasets[0].timestamp) : '';
+      return ts1 > ts2 ? data1 : data2;
+    }
+    return t1 > t2 ? data1 : data2;
+  }
+
   async function fetchData(force=false){
     // file:// 本地预览时优先尝试内嵌数据
     if(location.protocol === 'file:'){
@@ -58,12 +73,28 @@
       if(inline) return inline;
     }
 
+    // 先读取内嵌数据（如果存在）
+    const inlineData = readInline();
+    
     // 检查缓存
     const cachedAt = Number(localStorage.getItem(CACHE_AT) || 0);
     const cached = localStorage.getItem(CACHE_KEY);
-    const freshEnough = !force && cached && (Date.now() - cachedAt) < ONE_DAY;
+    let cachedData = null;
+    if(cached){
+      try{ 
+        cachedData = JSON.parse(cached);
+        // 如果内嵌数据存在且比缓存数据新，则忽略缓存
+        if(inlineData && getNewerData(inlineData, cachedData) === inlineData){
+          cachedData = null; // 忽略旧缓存
+        }
+      }catch(e){ 
+        console.warn('cache parse error', e); 
+      }
+    }
+    
+    const freshEnough = !force && cachedData && (Date.now() - cachedAt) < ONE_DAY;
     if(freshEnough){
-      try{ return JSON.parse(cached); }catch(e){ console.warn('cache parse error', e); }
+      return cachedData;
     }
 
     // 依次尝试多个候选地址
@@ -73,9 +104,11 @@
         const res = await fetch(url + '?_=' + Date.now(), {cache:'no-cache'});
         if(res.ok){
           const data = await res.json();
-          localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+          // 如果内嵌数据存在，比较并选择较新的
+          const finalData = inlineData ? getNewerData(data, inlineData) : data;
+          localStorage.setItem(CACHE_KEY, JSON.stringify(finalData));
           localStorage.setItem(CACHE_AT, String(Date.now()));
-          return data;
+          return finalData;
         }
       }catch(err){
         // 忽略，继续尝试下一个候选
@@ -84,17 +117,16 @@
     }
 
     // 通用兜底：若页面内提供了内嵌数据则使用
-    const inline = readInline();
-    if(inline){
+    if(inlineData){
       // 也缓存内嵌数据
-      localStorage.setItem(CACHE_KEY, JSON.stringify(inline));
+      localStorage.setItem(CACHE_KEY, JSON.stringify(inlineData));
       localStorage.setItem(CACHE_AT, String(Date.now()));
-      return inline;
+      return inlineData;
     }
 
     // 最后尝试使用缓存（即使过期）
-    if(cached){
-      try{ return JSON.parse(cached); }catch(_){/* ignore */}
+    if(cachedData){
+      return cachedData;
     }
 
     console.error('无法加载下载数据。尝试过的地址：', urls);
@@ -269,31 +301,59 @@
 
     // 查找匹配期望日期的赛题块
     let targetBlock = null;
+    let isTodayMatch = false;
     if(data && Array.isArray(data.datasets) && data.datasets.length > 0){
       // 调试信息（仅在开发环境）
       if(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'){
         console.log('期望日期:', expectedDate);
+        console.log('当前时间:', new Date().toISOString());
+        console.log('北京时间:', (function(){
+          const now = new Date();
+          const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+          const bjTime = new Date(utc + (3600000 * 8));
+          return bjTime.toISOString();
+        })());
         console.log('可用数据集:', data.datasets.map(b => ({
           timestamp: b.timestamp,
           date: b.timestamp ? String(b.timestamp).slice(0,10) : null,
-          itemsCount: b.items ? b.items.length : 0
+          itemsCount: b.items ? b.items.length : 0,
+          matches: b.timestamp ? String(b.timestamp).slice(0,10) === expectedDate : false
         })));
       }
       
-      // 首先尝试匹配今天的日期
+      // 首先尝试匹配今天的日期（精确匹配年月日）
       targetBlock = data.datasets.find(block => {
         if(!block.timestamp) return false;
         const ts = String(block.timestamp);
         // 支持多种时间格式：'2025-11-10 23:19:47' 或 '2025-11-10T23:19:47'
         const datePart = ts.slice(0,10);
-        return datePart === expectedDate;
+        const matches = datePart === expectedDate;
+        return matches;
       });
       
+      // 标记是否匹配到今天的日期
+      if(targetBlock && targetBlock.items && Array.isArray(targetBlock.items) && targetBlock.items.length > 0){
+        isTodayMatch = true;
+      } else {
+        // 如果匹配到的块没有有效数据，清空targetBlock以便回退
+        targetBlock = null;
+      }
+      
       // 如果匹配不到今天的，就显示最新的数据块（第一个，因为数据是按时间倒序排列的）
-      if(!targetBlock || !targetBlock.items || targetBlock.items.length === 0){
+      if(!targetBlock){
         targetBlock = data.datasets.find(block => {
           return block && block.items && Array.isArray(block.items) && block.items.length > 0;
         });
+        isTodayMatch = false; // 回退到最新数据，不是今天的
+      }
+      
+      // 最终调试信息
+      if(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'){
+        console.log('最终选择:', targetBlock ? {
+          timestamp: targetBlock.timestamp,
+          date: targetBlock.timestamp ? String(targetBlock.timestamp).slice(0,10) : null,
+          isTodayMatch: isTodayMatch
+        } : '无数据');
       }
     }
     
@@ -302,12 +362,23 @@
 
     if(hasToday){
       if(highlightP){
-        // 如果显示的不是今天的，提示用户这是最新的可用赛题
-        const isToday = targetBlock && targetBlock.timestamp && String(targetBlock.timestamp).slice(0,10) === expectedDate;
-        if(isToday){
+        // 根据匹配结果显示不同的提示信息
+        if(isTodayMatch){
           highlightP.textContent = lang==='en' ? "Today's challenge is published. See files below." : '今日赛题已发布，请查看下方文件。';
         }else{
-          highlightP.textContent = lang==='en' ? "Latest available challenge. See files below." : '最新可用赛题，请查看下方文件。';
+          // 显示实际日期信息
+          const actualDate = targetBlock && targetBlock.timestamp ? String(targetBlock.timestamp).slice(0,10) : '';
+          const dateStr = actualDate ? actualDate.replace(/^(\d{4})-(\d{2})-(\d{2})$/, (_, y, m, d) => {
+            if(lang === 'en'){
+              const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+              return `${months[parseInt(m)-1]} ${parseInt(d)}`;
+            }else{
+              return `${parseInt(m)}月${parseInt(d)}日`;
+            }
+          }) : '';
+          highlightP.textContent = lang==='en' 
+            ? `Latest available challenge (${dateStr}). See files below.`
+            : `最新可用赛题（${dateStr}），请查看下方文件。`;
         }
       }
       const card = el('div', {class:'card'});
