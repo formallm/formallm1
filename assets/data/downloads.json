@@ -7,14 +7,12 @@
       "note": "报名后可下载数据",
       "items": [
         {
-          "name": "Lean 赛题 (11月10日)",
           "md5": "0a0005bc43588c62f364a41de2ef020c",
           "url": "https://www.xir.cn/competitions/1143",
           "local": "assets/files/lean_1110.jsonl",
           "available": true
         },
         {
-          "name": "Litex 赛题 (11月10日)",
           "md5": "1a2660ec0cc8b259b731812e0083cbc2",
           "url": "https://www.xir.cn/competitions/1143",
           "local": "assets/files/litex_1110.jsonl",
@@ -28,14 +26,12 @@
       "note": "报名后可下载数据",
       "items": [
         {
-          "name": "Lean 赛题 (11月09日)",
           "md5": "a21be928caac66b858268673f954d049",
           "url": "https://www.xir.cn/competitions/1143",
           "local": "assets/files/lean_1109.jsonl",
           "available": true
         },
         {
-          "name": "Litex 赛题 (11月09日)",
           "md5": "d7a891012275a262bc168d284b50e63f",
           "url": "https://www.xir.cn/competitions/1143",
           "local": "assets/files/litex_1109.jsonl",
