@@ -1,5 +1,4 @@
 (function(){
-  const DATA_URL = '../assets/data/downloads.json';
   const CACHE_KEY = 'downloads_cache_v1';
   const CACHE_AT = 'downloads_cache_at_v1';
   const ONE_DAY = 24*3600*1000;
@@ -20,6 +19,24 @@
     try{ return JSON.parse(node.textContent || '{}'); }catch(e){ console.error('inline json parse error', e); return null; }
   }
 
+  // 生成候选数据地址，兼容根目录与子目录页面（类似 leaderboard.js）
+  function getCandidateDataURLs(){
+    const candidates = [];
+    // 1) 原始相对路径（适用于子目录页面如 cn/ 或 en/）
+    candidates.push('../assets/data/downloads.json');
+    // 2) 根目录相对路径（适用于根目录页面）
+    candidates.push('assets/data/downloads.json');
+    // 3) 推断 GitHub Pages 项目根（/repo-name/）
+    const parts = (window.location.pathname || '').split('/').filter(Boolean);
+    if(parts.length > 0){
+      candidates.push('/' + parts[0] + '/assets/data/downloads.json');
+    }
+    // 4) 站点根绝对路径（自定义域名场景）
+    candidates.push('/assets/data/downloads.json');
+    // 去重
+    return Array.from(new Set(candidates));
+  }
+
   // 规范化资源链接，兼容 GitHub Pages 子目录（如 /repo/en/）
   function normalizeHref(href){
     if(!href) return href;
@@ -35,31 +52,53 @@
   }
 
   async function fetchData(force=false){
-    try{
-      if(location.protocol === 'file:'){
-        const inline = readInline();
-        if(inline) return inline;
-      }
-      const cachedAt = Number(localStorage.getItem(CACHE_AT) || 0);
-      const cached = localStorage.getItem(CACHE_KEY);
-      const freshEnough = !force && cached && (Date.now() - cachedAt) < ONE_DAY;
-      if(freshEnough){ return JSON.parse(cached); }
-      const res = await fetch(DATA_URL, {cache:'no-cache'});
-      if(!res.ok) throw new Error('HTTP '+res.status);
-      const data = await res.json();
-      localStorage.setItem(CACHE_KEY, JSON.stringify(data));
-      localStorage.setItem(CACHE_AT, String(Date.now()));
-      return data;
-    }catch(err){
-      try{
-        const cached = localStorage.getItem(CACHE_KEY);
-        if(cached){ return JSON.parse(cached); }
-      }catch(_){/* ignore */}
+    // file:// 本地预览时优先尝试内嵌数据
+    if(location.protocol === 'file:'){
       const inline = readInline();
       if(inline) return inline;
-      console.error('downloads fetch error', err);
-      return null;
     }
+
+    // 检查缓存
+    const cachedAt = Number(localStorage.getItem(CACHE_AT) || 0);
+    const cached = localStorage.getItem(CACHE_KEY);
+    const freshEnough = !force && cached && (Date.now() - cachedAt) < ONE_DAY;
+    if(freshEnough){
+      try{ return JSON.parse(cached); }catch(e){ console.warn('cache parse error', e); }
+    }
+
+    // 依次尝试多个候选地址
+    const urls = getCandidateDataURLs();
+    for(const url of urls){
+      try{
+        const res = await fetch(url + '?_=' + Date.now(), {cache:'no-cache'});
+        if(res.ok){
+          const data = await res.json();
+          localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+          localStorage.setItem(CACHE_AT, String(Date.now()));
+          return data;
+        }
+      }catch(err){
+        // 忽略，继续尝试下一个候选
+        console.debug('Failed to fetch from', url, err);
+      }
+    }
+
+    // 通用兜底：若页面内提供了内嵌数据则使用
+    const inline = readInline();
+    if(inline){
+      // 也缓存内嵌数据
+      localStorage.setItem(CACHE_KEY, JSON.stringify(inline));
+      localStorage.setItem(CACHE_AT, String(Date.now()));
+      return inline;
+    }
+
+    // 最后尝试使用缓存（即使过期）
+    if(cached){
+      try{ return JSON.parse(cached); }catch(_){/* ignore */}
+    }
+
+    console.error('无法加载下载数据。尝试过的地址：', urls);
+    return null;
   }
 
   function renderList(sectionTitle, blocks){
@@ -235,9 +274,22 @@
     // 查找匹配期望日期的赛题块
     let targetBlock = null;
     if(data && Array.isArray(data.datasets)){
+      // 调试信息（仅在开发环境）
+      if(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'){
+        console.log('期望日期:', expectedDate);
+        console.log('可用数据集:', data.datasets.map(b => ({
+          timestamp: b.timestamp,
+          date: b.timestamp ? String(b.timestamp).slice(0,10) : null,
+          itemsCount: b.items ? b.items.length : 0
+        })));
+      }
+      
       targetBlock = data.datasets.find(block => {
-        const ts = block.timestamp ? String(block.timestamp).slice(0,10) : null;
-        return ts === expectedDate;
+        if(!block.timestamp) return false;
+        const ts = String(block.timestamp);
+        // 支持多种时间格式：'2025-11-10 23:19:47' 或 '2025-11-10T23:19:47'
+        const datePart = ts.slice(0,10);
+        return datePart === expectedDate;
       });
     }
     
@@ -267,7 +319,11 @@
       if(highlightP){
         highlightP.textContent = lang==='en' ? "Today's challenge is not yet updated." : '今日赛题还未更新，请稍后再来。';
       }
-      mount.append(el('p', {class:'text-muted'}, [document.createTextNode(lang==='en' ? 'No files available yet.' : '暂无可下载文件。')]));
+      // 显示调试信息（仅在开发环境）
+      const debugMsg = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
+        ? ` (期望日期: ${expectedDate}, 数据更新时间: ${data?.lastUpdated || 'N/A'})`
+        : '';
+      mount.append(el('p', {class:'text-muted'}, [document.createTextNode((lang==='en' ? 'No files available yet.' : '暂无可下载文件。') + debugMsg)]));
     }
   }
 
