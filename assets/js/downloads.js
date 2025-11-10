@@ -66,6 +66,23 @@
     return t1 > t2 ? data1 : data2;
   }
 
+  function getExpectedDateString(){
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const bjTime = new Date(utc + (3600000 * 8));
+    const y = bjTime.getFullYear();
+    const m = String(bjTime.getMonth() + 1).padStart(2, '0');
+    const d = String(bjTime.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  }
+
+  function getPrimaryDatasetDate(data){
+    if(!data || !Array.isArray(data.datasets) || !data.datasets.length) return null;
+    const block = data.datasets.find(item => item && Array.isArray(item.items) && item.items.length > 0);
+    if(!block || !block.timestamp) return null;
+    return String(block.timestamp).slice(0, 10);
+  }
+
   async function fetchData(force=false){
     // file:// 本地预览时优先尝试内嵌数据
     if(location.protocol === 'file:'){
@@ -75,6 +92,7 @@
 
     // 先读取内嵌数据（如果存在）
     const inlineData = readInline();
+    const expectedDate = getExpectedDateString();
     
     // 检查缓存
     const cachedAt = Number(localStorage.getItem(CACHE_AT) || 0);
@@ -87,12 +105,20 @@
         if(inlineData && getNewerData(inlineData, cachedData) === inlineData){
           cachedData = null; // 忽略旧缓存
         }
+        if(cachedData){
+          const datasetDate = getPrimaryDatasetDate(cachedData);
+          if(datasetDate && datasetDate !== expectedDate){
+            console.debug('[downloads] cached data date mismatch, force refresh', datasetDate, expectedDate);
+          }
+        }
       }catch(e){ 
         console.warn('cache parse error', e); 
+        cachedData = null;
       }
     }
     
-    const freshEnough = !force && cachedData && (Date.now() - cachedAt) < ONE_DAY;
+    const cacheMatchesToday = cachedData && getPrimaryDatasetDate(cachedData) === expectedDate;
+    const freshEnough = !force && cachedData && cacheMatchesToday && (Date.now() - cachedAt) < ONE_DAY;
     if(freshEnough){
       return cachedData;
     }
