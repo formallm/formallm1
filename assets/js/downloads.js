@@ -1,7 +1,7 @@
 (function(){
   const CACHE_KEY = 'downloads_cache_v1';
   const CACHE_AT = 'downloads_cache_at_v1';
-  const ONE_DAY = 24*3600*1000;
+  const CACHE_TTL = 60 * 1000;
 
   function el(tag, attrs={}, children=[]) {
     const e = document.createElement(tag);
@@ -114,7 +114,7 @@
     }
     
     const cacheMatchesToday = cachedData && getPrimaryDatasetDate(cachedData) === expectedDate;
-    const freshEnough = !force && cachedData && cacheMatchesToday && (Date.now() - cachedAt) < ONE_DAY;
+    const freshEnough = !force && cachedData && cacheMatchesToday && (Date.now() - cachedAt) < CACHE_TTL;
     if(freshEnough){
       return cachedData;
     }
