@@ -84,11 +84,7 @@
   }
 
   async function fetchData(force=false){
-    // file:// 本地预览时优先尝试内嵌数据
-    if(location.protocol === 'file:'){
-      const inline = readInline();
-      if(inline) return inline;
-    }
+    // file:// 本地预览时也尝试从外部 JSON 拉取数据（内嵌仅作为兜底，不再提前返回）
 
     // 先读取内嵌数据（如果存在）
     const inlineData = readInline();
