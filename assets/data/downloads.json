@@ -1,6 +1,25 @@
 {
-  "lastUpdated": "2025-11-09T23:19:47.506817",
+  "lastUpdated": "2025-11-10T23:18:39.584852",
   "datasets": [
+    {
+      "timestamp": "2025-11-11 23:18:39",
+      "title": "11月11日赛题",
+      "note": "报名后可下载数据",
+      "items": [
+        {
+          "md5": "bbab077dd4fa2a7381dde3b4cce1be73",
+          "url": "https://www.xir.cn/competitions/1143",
+          "local": "assets/files/lean_1111.jsonl",
+          "available": true
+        },
+        {
+          "md5": "d4ac2760459a9a0b62583faa3a9b17fc",
+          "url": "https://www.xir.cn/competitions/1143",
+          "local": "assets/files/litex_1111.jsonl",
+          "available": true
+        }
+      ]
+    },
     {
       "timestamp": "2025-11-10 23:19:47",
       "title": "11月10日赛题",
