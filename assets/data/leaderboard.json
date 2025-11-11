@@ -1,22 +1,22 @@
 {
-  "lastUpdated": "2025-11-10T23:33:24.287532+08:00",
+  "lastUpdated": "2025-11-11T23:00:08.206145+08:00",
   "stage": "preliminary",
   "litex": {
     "daily": [
       {
         "rank": 1,
-        "teamName": "相见欢离别难",
-        "teamId": "358833",
-        "score": 7.0,
+        "teamName": "XiRer_1667307105473",
+        "teamId": "358733",
+        "score": 8.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 2,
-        "teamName": "大笨狗爱学AI",
-        "teamId": "359478",
-        "score": 7.0,
+        "teamName": "相见欢离别难",
+        "teamId": "358833",
+        "score": 8.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -32,8 +32,8 @@
       },
       {
         "rank": 4,
-        "teamName": "团队名称",
-        "teamId": "360873",
+        "teamName": "橘子味盐汽水",
+        "teamId": "358782",
         "score": 7.0,
         "members": "",
         "submitTime": "",
@@ -41,6 +41,24 @@
       },
       {
         "rank": 5,
+        "teamName": "大笨狗爱学AI",
+        "teamId": "359478",
+        "score": 7.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 6,
+        "teamName": "XiRer_9bb41a",
+        "teamId": "360791",
+        "score": 7.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 7,
         "teamName": "牛肉丸好yummy",
         "teamId": "358840",
         "score": 7.0,
@@ -49,25 +67,16 @@
         "submissionCount": 0
       },
       {
-        "rank": 6,
-        "teamName": "能不能不做强化学习",
-        "teamId": "358478",
-        "score": 7.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 7,
-        "teamName": "橘子味盐汽水",
-        "teamId": "358782",
+        "rank": 8,
+        "teamName": "证算先锋",
+        "teamId": "358644",
         "score": 6.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
-        "rank": 8,
+        "rank": 9,
         "teamName": "XiRer_aea65e",
         "teamId": "358762",
         "score": 6.0,
@@ -76,34 +85,43 @@
         "submissionCount": 0
       },
       {
-        "rank": 9,
-        "teamName": "XiRer_1667307105473",
-        "teamId": "358733",
-        "score": 5.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
         "rank": 10,
-        "teamName": "XiRer_9bb41a",
-        "teamId": "360791",
-        "score": 4.0,
+        "teamName": "团队名称",
+        "teamId": "360873",
+        "score": 6.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 11,
-        "teamName": "大喵说的对",
-        "teamId": "360693",
-        "score": 3.0,
+        "teamName": "能不能不做强化学习",
+        "teamId": "358478",
+        "score": 6.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 12,
+        "teamName": "大喵说的对",
+        "teamId": "360693",
+        "score": 6.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 13,
+        "teamName": "三个人一休尼",
+        "teamId": "358036",
+        "score": 5.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 14,
         "teamName": "对的对的不对不队",
         "teamId": "358981",
         "score": 3.0,
@@ -112,7 +130,7 @@
         "submissionCount": 0
       },
       {
-        "rank": 13,
+        "rank": 15,
         "teamName": "XiRer_25fcae",
         "teamId": "359775",
         "score": 3.0,
@@ -121,28 +139,10 @@
         "submissionCount": 0
       },
       {
-        "rank": 14,
-        "teamName": "证算先锋",
-        "teamId": "358644",
-        "score": 2.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 15,
+        "rank": 16,
         "teamName": "Achilles",
         "teamId": "360816",
-        "score": 1.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 16,
-        "teamName": "三个人一休尼",
-        "teamId": "358036",
-        "score": 1.0,
+        "score": 0.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -153,34 +153,34 @@
         "rank": 1,
         "teamName": "枕套",
         "teamId": "360674",
-        "score": 45.0,
+        "score": 52.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 2,
-        "teamName": "大笨狗爱学AI",
-        "teamId": "359478",
-        "score": 43.0,
+        "teamName": "相见欢离别难",
+        "teamId": "358833",
+        "score": 51.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 3,
-        "teamName": "团队名称",
-        "teamId": "360873",
-        "score": 43.0,
+        "teamName": "大笨狗爱学AI",
+        "teamId": "359478",
+        "score": 50.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 4,
-        "teamName": "相见欢离别难",
-        "teamId": "358833",
-        "score": 43.0,
+        "teamName": "团队名称",
+        "teamId": "360873",
+        "score": 49.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -189,7 +189,7 @@
         "rank": 5,
         "teamName": "XiRer_aea65e",
         "teamId": "358762",
-        "score": 42.0,
+        "score": 48.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -198,7 +198,7 @@
         "rank": 6,
         "teamName": "能不能不做强化学习",
         "teamId": "358478",
-        "score": 41.0,
+        "score": 47.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -207,25 +207,25 @@
         "rank": 7,
         "teamName": "牛肉丸好yummy",
         "teamId": "358840",
-        "score": 36.0,
+        "score": 43.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 8,
-        "teamName": "橘子味盐汽水",
-        "teamId": "358782",
-        "score": 32.0,
+        "teamName": "XiRer_1667307105473",
+        "teamId": "358733",
+        "score": 40.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 9,
-        "teamName": "XiRer_1667307105473",
-        "teamId": "358733",
-        "score": 32.0,
+        "teamName": "橘子味盐汽水",
+        "teamId": "358782",
+        "score": 39.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -234,34 +234,34 @@
         "rank": 10,
         "teamName": "XiRer_9bb41a",
         "teamId": "360791",
-        "score": 31.0,
+        "score": 38.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 11,
-        "teamName": "XiRer_25fcae",
-        "teamId": "359775",
-        "score": 27.0,
+        "teamName": "大喵说的对",
+        "teamId": "360693",
+        "score": 32.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 12,
-        "teamName": "大喵说的对",
-        "teamId": "360693",
-        "score": 26.0,
+        "teamName": "证算先锋",
+        "teamId": "358644",
+        "score": 31.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 13,
-        "teamName": "证算先锋",
-        "teamId": "358644",
-        "score": 25.0,
+        "teamName": "XiRer_25fcae",
+        "teamId": "359775",
+        "score": 30.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -270,7 +270,7 @@
         "rank": 14,
         "teamName": "三个人一休尼",
         "teamId": "358036",
-        "score": 21.0,
+        "score": 26.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -279,7 +279,7 @@
         "rank": 15,
         "teamName": "对的对的不对不队",
         "teamId": "358981",
-        "score": 21.0,
+        "score": 24.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -335,6 +335,42 @@
     "daily": [
       {
         "rank": 1,
+        "teamName": "XiRer_f3fe83",
+        "teamId": "360922",
+        "score": 10.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 2,
+        "teamName": "transcendental_function",
+        "teamId": "360542",
+        "score": 8.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 3,
+        "teamName": "XiRer_03d035",
+        "teamId": "360872",
+        "score": 8.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 4,
+        "teamName": "SOSLean",
+        "teamId": "358699",
+        "score": 8.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 5,
         "teamName": "Lean说的都队",
         "teamId": "358316",
         "score": 7.0,
@@ -343,55 +379,19 @@
         "submissionCount": 0
       },
       {
-        "rank": 2,
-        "teamName": "请输入队名，最多30个字符",
-        "teamId": "360092",
+        "rank": 6,
+        "teamName": "浅试",
+        "teamId": "358522",
         "score": 7.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
-        "rank": 3,
-        "teamName": "transcendental_function",
-        "teamId": "360542",
-        "score": 6.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 4,
-        "teamName": "给我吧，这个我是真喜欢",
-        "teamId": "357558",
-        "score": 6.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 5,
-        "teamName": "SOSLean",
-        "teamId": "358699",
-        "score": 6.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 6,
-        "teamName": "XiRer_03d035",
-        "teamId": "360872",
-        "score": 5.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
         "rank": 7,
-        "teamName": "AI4Math-SG",
-        "teamId": "360946",
-        "score": 5.0,
+        "teamName": "混子对不队",
+        "teamId": "359791",
+        "score": 7.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -400,13 +400,31 @@
         "rank": 8,
         "teamName": "SphereLab",
         "teamId": "358904",
-        "score": 5.0,
+        "score": 6.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 9,
+        "teamName": "请输入队名，最多30个字符",
+        "teamId": "360092",
+        "score": 6.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 10,
+        "teamName": "给我吧，这个我是真喜欢",
+        "teamId": "357558",
+        "score": 5.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 11,
         "teamName": "prompt对对队",
         "teamId": "359087",
         "score": 5.0,
@@ -415,79 +433,88 @@
         "submissionCount": 0
       },
       {
-        "rank": 10,
-        "teamName": "混子对不队",
-        "teamId": "359791",
-        "score": 4.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 11,
+        "rank": 12,
         "teamName": "解在何方",
         "teamId": "360806",
-        "score": 2.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 12,
-        "teamName": "钱来",
-        "teamId": "358911",
-        "score": 2.0,
+        "score": 5.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 13,
-        "teamName": "浅试",
-        "teamId": "358522",
-        "score": 1.0,
+        "teamName": "AI4Math-SG",
+        "teamId": "360946",
+        "score": 5.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 14,
-        "teamName": "深度求索",
-        "teamId": "360287",
-        "score": 1.0,
+        "teamName": "DF1695865624563",
+        "teamId": "358640",
+        "score": 3.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 15,
-        "teamName": "跟我的提示词说去吧",
-        "teamId": "357606",
-        "score": 1.0,
+        "teamName": "钱来",
+        "teamId": "358911",
+        "score": 3.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 16,
-        "teamName": "他不是zcd",
-        "teamId": "357796",
-        "score": 1.0,
+        "teamName": "跟我的提示词说去吧",
+        "teamId": "357606",
+        "score": 2.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 17,
-        "teamName": "XiRer_f3fe83",
-        "teamId": "360922",
-        "score": 1.0,
+        "teamName": "猴嗨森",
+        "teamId": "359562",
+        "score": 2.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 18,
+        "teamName": "他不是zcd",
+        "teamId": "357796",
+        "score": 2.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 19,
+        "teamName": "scut_tucs",
+        "teamId": "357505",
+        "score": 1.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 20,
+        "teamName": "希尔伯特",
+        "teamId": "358878",
+        "score": 1.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 21,
         "teamName": "胜天半子",
         "teamId": "358618",
         "score": 1.0,
@@ -496,46 +523,10 @@
         "submissionCount": 0
       },
       {
-        "rank": 19,
-        "teamName": "Henry of Scarlets",
-        "teamId": "359210",
-        "score": 1.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 20,
-        "teamName": "猴嗨森",
-        "teamId": "359562",
-        "score": 0.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 21,
-        "teamName": "3CMEP",
-        "teamId": "358802",
-        "score": 0.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
         "rank": 22,
-        "teamName": "DF1695865624563",
-        "teamId": "358640",
-        "score": 0.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 23,
-        "teamName": "scut_tucs",
-        "teamId": "357505",
-        "score": 0.0,
+        "teamName": "MALENCHENKO",
+        "teamId": "359126",
+        "score": 1.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -546,7 +537,7 @@
         "rank": 1,
         "teamName": "Lean说的都队",
         "teamId": "358316",
-        "score": 43.0,
+        "score": 50.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -555,34 +546,34 @@
         "rank": 2,
         "teamName": "transcendental_function",
         "teamId": "360542",
-        "score": 41.0,
+        "score": 49.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 3,
-        "teamName": "请输入队名，最多30个字符",
-        "teamId": "360092",
-        "score": 41.0,
+        "teamName": "SOSLean",
+        "teamId": "358699",
+        "score": 48.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 4,
-        "teamName": "给我吧，这个我是真喜欢",
-        "teamId": "357558",
-        "score": 40.0,
+        "teamName": "请输入队名，最多30个字符",
+        "teamId": "360092",
+        "score": 47.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 5,
-        "teamName": "SOSLean",
-        "teamId": "358699",
-        "score": 40.0,
+        "teamName": "给我吧，这个我是真喜欢",
+        "teamId": "357558",
+        "score": 45.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -591,7 +582,7 @@
         "rank": 6,
         "teamName": "SphereLab",
         "teamId": "358904",
-        "score": 38.0,
+        "score": 44.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -600,7 +591,7 @@
         "rank": 7,
         "teamName": "浅试",
         "teamId": "358522",
-        "score": 36.0,
+        "score": 43.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -609,25 +600,25 @@
         "rank": 8,
         "teamName": "XiRer_f3fe83",
         "teamId": "360922",
-        "score": 32.0,
+        "score": 42.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 9,
-        "teamName": "AI4Math-SG",
-        "teamId": "360946",
-        "score": 31.0,
+        "teamName": "XiRer_03d035",
+        "teamId": "360872",
+        "score": 37.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
         "rank": 10,
-        "teamName": "XiRer_03d035",
-        "teamId": "360872",
-        "score": 29.0,
+        "teamName": "AI4Math-SG",
+        "teamId": "360946",
+        "score": 36.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -636,7 +627,7 @@
         "rank": 11,
         "teamName": "混子对不队",
         "teamId": "359791",
-        "score": 25.0,
+        "score": 32.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -645,7 +636,7 @@
         "rank": 12,
         "teamName": "解在何方",
         "teamId": "360806",
-        "score": 24.0,
+        "score": 29.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -663,7 +654,7 @@
         "rank": 14,
         "teamName": "他不是zcd",
         "teamId": "357796",
-        "score": 20.0,
+        "score": 22.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -672,7 +663,7 @@
         "rank": 15,
         "teamName": "钱来",
         "teamId": "358911",
-        "score": 18.0,
+        "score": 21.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -681,7 +672,7 @@
         "rank": 16,
         "teamName": "prompt对对队",
         "teamId": "359087",
-        "score": 16.0,
+        "score": 21.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -690,7 +681,7 @@
         "rank": 17,
         "teamName": "MALENCHENKO",
         "teamId": "359126",
-        "score": 14.0,
+        "score": 15.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
@@ -733,6 +724,42 @@
       },
       {
         "rank": 22,
+        "teamName": "DF1695865624563",
+        "teamId": "358640",
+        "score": 7.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 23,
+        "teamName": "猴嗨森",
+        "teamId": "359562",
+        "score": 5.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 24,
+        "teamName": "跟我的提示词说去吧",
+        "teamId": "357606",
+        "score": 5.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 25,
+        "teamName": "scut_tucs",
+        "teamId": "357505",
+        "score": 5.0,
+        "members": "",
+        "submitTime": "",
+        "submissionCount": 0
+      },
+      {
+        "rank": 26,
         "teamName": "拒做韭菜",
         "teamId": "359876",
         "score": 5.0,
@@ -741,25 +768,16 @@
         "submissionCount": 0
       },
       {
-        "rank": 23,
-        "teamName": "DF1695865624563",
-        "teamId": "358640",
+        "rank": 27,
+        "teamName": "希尔伯特",
+        "teamId": "358878",
         "score": 4.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
       },
       {
-        "rank": 24,
-        "teamName": "scut_tucs",
-        "teamId": "357505",
-        "score": 4.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 25,
+        "rank": 28,
         "teamName": "77",
         "teamId": "360805",
         "score": 4.0,
@@ -768,36 +786,9 @@
         "submissionCount": 0
       },
       {
-        "rank": 26,
-        "teamName": "猴嗨森",
-        "teamId": "359562",
-        "score": 3.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 27,
-        "teamName": "跟我的提示词说去吧",
-        "teamId": "357606",
-        "score": 3.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 28,
+        "rank": 29,
         "teamName": "XiRer_005813",
         "teamId": "359084",
-        "score": 3.0,
-        "members": "",
-        "submitTime": "",
-        "submissionCount": 0
-      },
-      {
-        "rank": 29,
-        "teamName": "希尔伯特",
-        "teamId": "358878",
         "score": 3.0,
         "members": "",
         "submitTime": "",
@@ -807,7 +798,7 @@
         "rank": 30,
         "teamName": "胜天半子",
         "teamId": "358618",
-        "score": 1.0,
+        "score": 2.0,
         "members": "",
         "submitTime": "",
         "submissionCount": 0
