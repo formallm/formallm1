@@ -1,0 +1,10 @@
+{"id": "litex_week3_2172", "nl_problem": "Determine the remainder of $71 \\\\pmod{3}$."}
+{"id": "litex_week3_7425", "nl_problem": "In a basketball game, Jon scored 3 points. Jack scored 5 points more than Jon, and Tom scored 4 less than the points of Jon and Jack together. How many points did they score altogether?"}
+{"id": "litex_week3_2175", "nl_problem": "Define a function on the positive integers recursively by $f(1) = 2, f(n) = f(n-1) + 1$ if $n$ is even, and $f(n) = f(n-2) + 2$ if n is odd and greater than 1, what is $f(2017)$?"}
+{"id": "litex_week3_7660", "nl_problem": "Jeremy decides to take Tylenol because of the pain he is experiencing. He decides to take 1000 mg every 6 hours for 2 weeks.  How many pills do they take if they are each 500 mg?"}
+{"id": "litex_week3_2117", "nl_problem": "If $321_{b}$ is equal to the base 10 integer 57, find $b$ given that $b>0$."}
+{"id": "litex_week3_1138422", "nl_problem": "Let $f(x) = 2x-3$ and $g(x) = x+1$. What is the value of $g(f(5)-1)$?"}
+{"id": "litex_week3_8082", "nl_problem": "At a James Bond movie party, each guest is either male (M) or female (F. 40% of the guests are women, 80% of the women are wearing rabbit ears, and 60% of the males are wearing rabbit ears. If the total number of guests at the party is 200, given all this information, what is the total number of people wearing rabbit ears?"}
+{"id": "litex_week3_1138433", "nl_problem": "The first and ninth terms of an arithmetic sequence are $\\\\frac23$ and $\\\\frac45$, respectively. What is the fifth term?"}
+{"id": "litex_week3_8248", "nl_problem": "Last week, a farmer shipped 10 boxes of pomelos which had 240 pomelos in all. This week, the farmer shipped 20 boxes. How many dozens of pomelos did the farmer ship in all?"}
+{"id": "litex_week3_9654", "nl_problem": "An apple tree produces 40 apples in its first year.  The second year the apple tree produces 8 more than double the amount of apples that it produced the first year, and the third year production went down by a fourth due to an insect infestation.  How many apples did the tree produce in total in the first three years?"}
