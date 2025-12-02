@@ -13,7 +13,7 @@
   const LeaderboardAPI = {
     // ========== 配置区 ==========
     // 是否显示"今日榜"功能（设为 false 暂时隐藏，设为 true 重新显示）
-    showDailyRanking: true,
+    showDailyRanking: false,
     // ===========================
     
     // 数据源 URL（可配置为云端接口）
