@@ -204,11 +204,9 @@
      * 渲染单个赛道（包含切换功能）
      */
     renderTrack(container, trackId, trackData, isEn) {
-      // 如果禁用今日榜功能，直接显示总榜
+      // 如果禁用今日榜功能，直接显示总榜（隐藏“最后更新”时间）
       if (!this.showDailyRanking) {
-        const updateTimeText = this.cache?.lastUpdated 
-          ? `<p class="text-muted text-center" style="font-size:13px;margin-top:12px;">${isEn ? 'Last updated: ' : '最后更新：'}${this.formatUpdateTime(this.cache.lastUpdated, isEn)}</p>`
-          : '';
+        const updateTimeText = '';
         container.innerHTML = `
           <div id="${trackId}-table-container"></div>
           <div id="${trackId}-pagination" class="pagination-container"></div>
@@ -226,12 +224,8 @@
       // 获取日榜对应的日期
       const dailyDate = this.getDailyRankingDate(isEn);
       
-      // 创建切换按钮（根据初始类型设置 active）
-      const updateTimeText = this.cache?.lastUpdated 
-        ? `<p class="text-muted text-center" style="font-size:13px;margin-top:12px;" id="${trackId}-update-time">
-             ${isEn ? 'Last updated: ' : '最后更新：'}${this.formatUpdateTime(this.cache.lastUpdated, isEn)}
-           </p>`
-        : '';
+      // 创建切换按钮（根据初始类型设置 active），此处同样隐藏“最后更新”时间
+      const updateTimeText = '';
       
       const dailyDateHint = `<p class="text-muted text-center" style="font-size:12px;margin-top:8px;" id="${trackId}-daily-hint">
         ${isEn 
